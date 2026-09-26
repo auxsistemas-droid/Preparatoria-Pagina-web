@@ -1,0 +1,499 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header{
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.logo img{
+    height: 45px;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links li a {
+text-decoration: none;
+    color: #333333;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el ícono y el texto */
+    transition: color 0.3s ease;
+}
+
+.nav-link li a i{
+    font-size: 1.1rem;
+    color: #0066cc; /* Color del ícono (cámbialo al de tu marca) */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efectos al pasar el cursor (Hover) */
+.nav-links li a:hover {
+    color: #0066cc;
+}
+
+.nav-links li a:hover i {
+    transform: translateY(-2px); /* Eleva levemente el ícono */
+}
+
+.line-top {
+    height: 10px;
+    background-color: #0066cc; /* Cambia este color al de tu marca */
+    width: 100%;
+}
+
+/* =======================================
+   ESTILOS DEL SLIDER (HERO)
+======================================= */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Altura de la imagen */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Superposición oscura */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 30, 60, 0.65); /* Azul oscuro transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+    color: #ffffff;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/* Botón de la frase */
+.btn-hero {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: #d99b00; /* Dorado Lasallista */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hero:hover {
+    background-color: #b88300;
+    transform: translateY(-3px);
+}
+
+/* Flechas izquierda / derecha */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 15px 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #000;
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+/* Indicadores de puntos */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #d99b00;
+    transform: scale(1.2);
+}
+
+/* =======================================
+   SECCIÓN BENEFICIOS
+======================================= */
+.beneficios {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.beneficios-titulo {
+    text-align: center;
+    font-size: 2rem;
+    color: #003366; /* Azul institucional */
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.beneficios-titulo::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #d99b00; /* Dorado Lasallista */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Grilla con las 3 imágenes lado a lado */
+.beneficios-images {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap; /* Para adaptarse a pantallas pequeñas */
+}
+
+.beneficio-card {
+    flex: 1;
+    min-width: 280px; /* Ancho mínimo antes de acomodarse abajo en móviles */
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.beneficio-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.beneficio-info {
+    padding: 25px 20px;
+    text-align: center;
+}
+
+.beneficio-info i {
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 12px;
+}
+
+.beneficio-info h3 {
+    font-size: 1.25rem;
+    color: #222222;
+    margin-bottom: 10px;
+}
+
+.beneficio-info p {
+    font-size: 0.95rem;
+    color: #666666;
+    line-height: 1.5;
+}
+
+/* =======================================
+   CARRUSEL INFINITO DE MARCAS / CONVENIOS
+======================================= */
+.noticias {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.carousel-titulo {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #003366;
+    margin-bottom: 25px;
+}
+
+.carousel {
+    width: 100%;
+    display: flex;
+    overflow: hidden; /* Oculta las barras de desplazamiento */
+    position: relative;
+    padding: 15px 0;
+    /* Difuminado sutil en las esquinas izquierda y derecha */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.grupo {
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+    padding-right: 1.5em; /* Asegura espacio constante entre los dos grupos */
+    flex-shrink: 0;
+    animation: scrollInfinito 18s linear infinite; /* Animación fluida */
+}
+
+/* Detiene la animación cuando el usuario pasa el mouse encima */
+.carousel:hover .grupo {
+    animation-play-state: paused;
+}
+
+.carousel .grupo .card {
+    width: 140px;
+    height: 70px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.carousel .grupo .card:hover {
+    transform: translateY(-3px);
+    border-color: #003366;
+}
+
+.carousel .grupo .card i {
+    font-size: 1.8rem;
+    color: #003366; /* Color del icono */
+}
+
+.carousel .grupo .card span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #444444;
+}
+
+/* Clave del movimiento infinito continuo */
+@keyframes scrollInfinito {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* =======================================
+   footer
+
+   /* =======================================
+   ESTILOS DEL FOOTER
+======================================= */
+footer {
+    background-color: #002244; /* Azul marino institucional oscuro */
+    color: #e0e0e0;
+    padding-top: 50px;
+    margin-top: 60px;
+    font-size: 0.95rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+/* Línea dorada bajo los títulos */
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #d99b00; /* Dorado Lasallista */
+}
+
+/* Columna Identidad */
+.footer-logo {
+    height: 50px;
+    margin-bottom: 15px;
+    filter: brightness(0) invert(1); /* Convierte el logo a blanco si tiene fondo transparente */
+}
+
+.footer-section.about p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #cccccc;
+}
+
+.socials {
+    display: flex;
+    gap: 12px;
+}
+
+.socials a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.socials a:hover {
+    background-color: #d99b00;
+    transform: translateY(-3px);
+}
+
+/* Columna Enlaces */
+.footer-section.links ul {
+    list-style: none;
+}
+
+.footer-section.links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section.links ul li a {
+    color: #cccccc;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-section.links ul li a i {
+    font-size: 0.8rem;
+    color: #d99b00;
+}
+
+.footer-section.links ul li a:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+/* Columna Contacto */
+.footer-section.contact p {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    color: #cccccc;
+}
+
+.footer-section.contact p i {
+    color: #d99b00;
+    font-size: 1.1rem;
+    margin-top: 3px;
+}
+
+/* Sub-footer inferior */
+.footer-bottom {
+    background-color: #001830;
+    text-align: center;
+    padding: 18px 20px;
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
