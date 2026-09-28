@@ -5,7 +5,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-header{
+header {
     background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -22,9 +22,19 @@ header{
     padding: 15px 20px;
 }
 
-.logo img{
+.logo img {
     height: 45px;
     display: block;
+}
+
+/* Botón hamburguesa (oculto por defecto en escritorio) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #0066cc;
+    cursor: pointer;
 }
 
 .nav-links {
@@ -34,35 +44,78 @@ header{
 }
 
 .nav-links li a {
-text-decoration: none;
+    text-decoration: none;
     color: #333333;
     font-size: 1rem;
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 8px; /* Espacio entre el ícono y el texto */
+    gap: 8px;
     transition: color 0.3s ease;
 }
 
-.nav-link li a i{
+/* Nota: Corregido selector (.nav-links en lugar de .nav-link) */
+.nav-links li a i {
     font-size: 1.1rem;
-    color: #0066cc; /* Color del ícono (cámbialo al de tu marca) */
+    color: #0066cc;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Efectos al pasar el cursor (Hover) */
 .nav-links li a:hover {
     color: #0066cc;
 }
 
 .nav-links li a:hover i {
-    transform: translateY(-2px); /* Eleva levemente el ícono */
+    transform: translateY(-2px);
 }
 
 .line-top {
     height: 10px;
-    background-color: #0066cc; /* Cambia este color al de tu marca */
+    background-color: #0066cc;
     width: 100%;
+}
+
+/* =======================================
+   ADAPTACIÓN RESPONSIVA (MÓVILES)
+======================================= */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Muestra la hamburguesa en celulares */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%; /* Se coloca justo debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        max-height: 0; /* Oculto inicialmente */
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out, padding 0.3s ease;
+    }
+
+    /* Clase activa que despliega el menú cuando das clic */
+    .nav-links.active {
+        max-height: 350px;
+        padding: 10px 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links li a {
+        padding: 15px 25px;
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-links li:last-child a {
+        border-bottom: none;
+    }
 }
 
 /* =======================================
@@ -241,6 +294,8 @@ text-decoration: none;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.9s ease-out forwards;
+    opacity: 0;
 }
 
 .beneficio-card:hover {
@@ -276,6 +331,28 @@ text-decoration: none;
     font-size: 0.95rem;
     color: #666666;
     line-height: 1.5;
+}
+.beneficio-card:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.beneficio-card:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.beneficio-card:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px); 
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);  
+  }
 }
 
 /* =======================================

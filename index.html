@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio | Preparatoria La Salle Torreón</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link rel="icon" href="./icon.png" type="image/png" sizes="32x32">    
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -17,6 +17,11 @@
                     <img src="./plstcolor.png" alt="Logo">
                 </a>
             </div>
+
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir Menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
             <ul class="nav-links">
                 <li>
                     <a href="#"><i class="fa-solid fa-house"></i> Inicio</a>
@@ -185,7 +190,28 @@
     </div>
 </footer>
 
-    <!-- CÓDIGO JAVASCRIPT PARA EL SLIDER -->
+    <!-- 1. SCRIPT PARA EL MENÚ RESPONSIVO (NAVBAR) -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        const menuIcon = mobileMenu ? mobileMenu.querySelector('i') : null;
+
+        if (mobileMenu && navLinks) {
+            mobileMenu.addEventListener('click', function () {
+                navLinks.classList.toggle('show');
+
+                if (menuIcon) {
+                    if (navLinks.classList.contains('show')) {
+                        menuIcon.className = 'fa-solid fa-xmark';
+                    } else {
+                        menuIcon.className = 'fa-solid fa-bars';
+                    }
+                }
+            });
+        }
+    </script>
+
+    <!-- 2. SCRIPT PARA EL SLIDER -->
     <script>
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
@@ -196,6 +222,7 @@
         let slideInterval;
 
         function showSlide(index) {
+            if (slides.length === 0) return;
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
 
@@ -204,7 +231,7 @@
             else currentSlide = index;
 
             slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
         }
 
         function nextSlide() {
@@ -215,18 +242,18 @@
             showSlide(currentSlide - 1);
         }
 
-        // Flechas
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetTimer();
-        });
+        if (nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetTimer();
+            });
 
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            resetTimer();
-        });
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetTimer();
+            });
+        }
 
-        // Puntos clicables
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 showSlide(index);
@@ -234,9 +261,10 @@
             });
         });
 
-        // Autoplay (cambia cada 5 segundos)
         function startTimer() {
-            slideInterval = setInterval(nextSlide, 5000);
+            if (slides.length > 0) {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
         }
 
         function resetTimer() {
