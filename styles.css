@@ -98,11 +98,10 @@ header {
     }
 
     /* Clase activa que despliega el menú cuando das clic */
-    .nav-links.active {
+    .nav-links.show {
         max-height: 350px;
         padding: 10px 0;
     }
-
     .nav-links li {
         width: 100%;
     }
