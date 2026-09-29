@@ -7,41 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="./icon.png" type="image/png" sizes="32x32">    
     <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./navbar.css">
 </head>
 <body>
-    <div class="line-top"></div>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="#">
-                    <img src="./plstcolor.png" alt="Logo">
-                </a>
-            </div>
-
-            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir Menú">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <ul class="nav-links" id="nav-links">
-                <li>
-                    <a href="#"><i class="fa-solid fa-house"></i> Inicio</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-users"></i> Nosotros</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-graduation-cap"></i> Oferta Educativa</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-file-pen"></i> Admisiones</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-envelope"></i> Contacto</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
+<header id="main-header"></header>
     <!-- SECCIÓN SLIDER / SLIDER HERO -->
     <section class="slider-container">
         <!-- Diapositiva 1 -->
@@ -191,25 +160,7 @@
 </footer>
 
     <!-- 1. SCRIPT PARA EL MENÚ RESPONSIVO (NAVBAR) -->
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        const menuIcon = mobileMenu ? mobileMenu.querySelector('i') : null;
-
-        if (mobileMenu && navLinks) {
-            mobileMenu.addEventListener('click', function () {
-                navLinks.classList.toggle('show');
-
-                if (menuIcon) {
-                    if (navLinks.classList.contains('show')) {
-                        menuIcon.className = 'fa-solid fa-xmark';
-                    } else {
-                        menuIcon.className = 'fa-solid fa-bars';
-                    }
-                }
-            });
-        }
-    </script>
+    <script src="navbar.js"></script>
 
     <!-- 2. SCRIPT PARA EL SLIDER -->
     <script>

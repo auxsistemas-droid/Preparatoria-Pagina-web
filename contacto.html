@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Preparatoria La Salle Torreón</title>
+    <link rel="icon" href="./icon.png" type="image/png" sizes="32x32">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./navbar.css">
+    <style>
+        /* --- SECCIÓN CONTACTO --- */
+.contacto {
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.contacto-container h2 {
+  font-size: 2rem;
+  color: var(--blue-lasalle, #023365);
+  margin-bottom: 0.5rem;
+  border-bottom: 3px solid var(--gold-lasalle, #a98d2f);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.contacto-container > p {
+  color: #4a5568;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Tarjeta con Información y Formulario */
+.contacto-info {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-top: 5px solid var(--blue-lasalle, #023365);
+}
+
+.contacto-info h3 {
+  color: var(--blue-lasalle, #023365);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.info-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.info-lista li {
+  margin-bottom: 0.8rem;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.info-lista i {
+  color: var(--gold-lasalle, #a98d2f);
+  font-size: 1.1rem;
+}
+
+/* Formulario */
+.contacto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+  border-color: var(--blue-lasalle, #023365);
+}
+
+.contacto-form button {
+  background: var(--blue-lasalle, #023365);
+  color: #ffffff;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contacto-form button:hover {
+  background: #012244;
+  transform: translateY(-2px);
+}
+
+/* Contenedor del Mapa */
+.mapa-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* o 16 / 9 según tu diseño */
+  max-height: 450px;
+}
+
+.mapa-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+    </style>
+</head>
+    <header id="main-header"></header>
+
+<body>
+    <section class="contacto" id="contacto">
+  <div class="contacto-container">
+    <h2>Contacto</h2>
+    <p>Estamos para atenderte. Ponte en contacto con nosotros o visítanos en nuestro campus.</p>
+
+    <div class="contacto-grid">
+      <!-- Tarjeta de Información y Formulario -->
+      <div class="contacto-info">
+        <h3>Preparatoria La Salle Torreón</h3>
+        <ul class="info-lista">
+          <li><i class="fa-solid fa-location-dot"></i> Av. Universidad s/n, Torreón, Coah.</li>
+          <li><i class="fa-solid fa-phone"></i> (871) 750 2000</li>
+          <li><i class="fa-solid fa-envelope"></i> informes@lasalle.edu.mx</li>
+        </ul>
+
+        <form class="contacto-form" onsubmit="event.preventDefault();">
+          <input type="text" placeholder="Tu nombre" required>
+          <input type="email" placeholder="Correo electrónico" required>
+          <textarea rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
+          <button type="submit">Enviar mensaje</button>
+        </form>
+      </div>
+
+      <!-- Mapa Interactivo Moderno -->
+      <div class="mapa-wrapper">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1272.664393147701!2d-103.46748824820392!3d25.550416190271115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fd976b0c133c1%3A0x5e6022a5ae6c20f7!2sUniversidad%20La%20Salle%20Laguna!5e0!3m2!1ses-419!2smx!4v1790704953581!5m2!1ses-419!2smx"
+    title="Ubicación de Universidad La Salle Laguna"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+    </div>
+  </div>
+</section>
+
+</body>
+    <script src="./navbar.js"></script>
+</html>

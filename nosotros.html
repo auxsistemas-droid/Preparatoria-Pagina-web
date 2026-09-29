@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./icon.png" type="image/png" sizes="32x32">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./navbar.css">
+    <style>
+      :root { --nav-h: 75px; }
+      /* Smooth scroll y alineación por secciones */
+      html {
+        scroll-behavior: smooth;
+        scroll-snap-type: y proximity;      /* menos agresivo que mandatory */
+        scroll-padding-top: var(--nav-h); 
+      }
+
+      .nosotros { 
+        position: relative;
+      }
+
+      .fondo {
+        position: sticky;
+        top: var(--nav-h);                  /* se pega debajo del navbar, no detrás */
+        height: calc(100vh - var(--nav-h));
+        background-color: #ffffff;
+        /* Aceleración por hardware para el fondo */
+        will-change: transform;
+        transform: translateZ(0);
+      }
+
+      .fondo::after { 
+        display: none; 
+      }
+
+      .pasos {
+        position: relative;
+        z-index: 1;
+        margin-top: calc(-100vh + var(--nav-h));
+      }
+
+      .paso {
+        min-height: calc(100vh - var(--nav-h));
+        scroll-snap-align: start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Encaja cada paso perfectamente en pantalla */
+      }
+
+      .contenido {
+        max-width: 650px;
+        width: 90%;
+        color: #ffffff;
+        padding: 2.5rem;
+        background: rgb(9, 69, 129); /* Fondo azul oscuro semitransparente */
+        backdrop-filter: blur(12px);         /* Efecto cristal / desenfoque de fondo */
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.098); /* Borde fino elegante */
+        border-left: 5px solid #a98d2f;     /* Detalle dorado de marca en la izquierda */
+        border-radius: 16px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform;
+    }
+
+        /* Opcional: Estilo rápido para los títulos dentro del cuadro */
+        .contenido h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+        }
+
+        .contenido p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .paso.activo .contenido { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+      .contenido img {
+        display: block;         
+        max-width: 200px;        
+        width: 100%;             
+        height: auto;            
+        margin: 1.5rem auto 0;  
+        border-radius: 8px;
+    }
+   /* Estilo base para ambos laterales fijos */
+.lateral {
+  position: fixed;
+  top: var(--nav-h, 75px);            /* Comienza justo debajo de tu navbar */
+  height: calc(100vh - var(--nav-h, 75px)); /* Ocupa todo el alto visible restante */
+  width: 220px;                       /* Ajusta el ancho que deseas que cubra */
+  z-index: 10;                        /* Queda encima del fondo y los divs */
+  pointer-events: none;               /* Permite hacer scroll/clic a través */
+}
+
+/* Pegado total al borde izquierdo */
+.lateral-izq {
+  left: 0;
+}
+
+/* Pegado total al borde derecho */
+.lateral-der {
+  right: 0;
+}
+
+/* La imagen ocupa el 100% del alto y ancho del contenedor */
+.lateral img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                  /* Cubre todo el espacio sin deformarse */
+  display: block;
+}
+
+/* Ocultar en dispositivos móviles/tablets para que no tapen el texto */
+@media (max-width: 1024px) {
+  .lateral {
+    display: none;
+  }
+}
+    
+    </style>
+    <title>Nosotros | Preparatoria La Salle Torreón</title>
+</head>
+
+<body>
+    <header id="main-header"></header>
+
+    <section class="nosotros">
+  <div class="fondo"></div>
+
+  <!-- Contenedores Laterales Fijos -->
+  <div class="lateral lateral-izq">
+    <img src="./lat1.jpg" alt="Decoración Izquierda">
+  </div>
+
+  <div class="lateral lateral-der">
+    <img src="./lat1.jpg" alt="Decoración Derecha">
+  </div>
+
+  <div class="pasos">
+    <article class="paso">
+      <div class="contenido">
+        <h2>Quiénes somos</h2>
+        <p>Una institución de inspiración cristiana con carisma lasallista y más de 300 años de tradición educativa. Formamos parte de una red global presente en 82 países, comprometida con la excelencia académica, la innovación y el servicio a la comunidad.</p>
+        <img src="./san-juan-bautista-de-la-salle.png" alt="San Juan Bautista">
+      </div>
+    </article>
+
+    <article class="paso">
+      <div class="contenido">
+        <h2>Misión</h2>
+        <p>Coadyuvar a la formación integral de los alumnos mediante una sólida base académica y valores humanos y evangélicos, orientados a la justicia, la paz y la atención a los más necesitados.</p>
+      </div>
+    </article>
+
+    <article class="paso">
+      <div class="contenido">
+        <h2>Visión</h2>
+        <p>Ser una fuerza viva y transformadora en la sociedad, impulsando un espíritu comunitario que prepare profesionales con proyección internacional, capaces de responder a las exigencias socioeconómicas y culturales de México y el mundo.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+    <script src="./navbar.js"></script>
+    <script>
+      // Detección con margen para activar la animación justo a tiempo
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('activo');
+          } else {
+            e.target.classList.remove('activo');
+          }
+        });
+      }, { 
+        threshold: 0.4,
+        rootMargin: "0px 0px -10% 0px"
+      });
+
+      document.querySelectorAll('.paso').forEach(p => obs.observe(p));
+    </script>
+</body>
+</html>

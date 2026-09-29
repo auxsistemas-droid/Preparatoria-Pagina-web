@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Educativa | Preparatoria La Salle Torreón</title>
+    <link rel="icon" href="./icon.png" type="image/png" sizes="32x32">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="./oferta.css">
+    <style>
+      :root {
+  --nav-h: 75px;
+  --blue-lasalle: #023365;
+  --gold-lasalle: #a98d2f;
+  --text-dark: #2c3e50;
+  --bg-light: #f8fafc;
+}
+
+/* Contenedor Principal */
+.oferta {
+  padding: calc(var(--nav-h) + 3rem) 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: var(--text-dark);
+}
+
+/* Cabecera / Introducción */
+.oferta-container {
+  max-width: 850px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.oferta-container h1 {
+  font-size: 2.4rem;
+  color: var(--blue-lasalle);
+  margin-bottom: 1.2rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Detalle de línea dorada bajo el título */
+.oferta-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--gold-lasalle);
+  border-radius: 2px;
+}
+
+.oferta-container p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+/* Tabla Estilizada */
+.tabla {
+  width: 100%;
+  overflow-x: auto; /* Permite scroll horizontal fluido en celulares */
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Encabezado de la Tabla */
+thead tr {
+  background-color: var(--blue-lasalle);
+  color: #ffffff;
+}
+
+th {
+  padding: 1.2rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid var(--gold-lasalle);
+  white-space: nowrap;
+}
+
+/* Filas y Celdas */
+td {
+  padding: 1.1rem 1.5rem;
+  font-size: 0.95rem;
+  color: #334155;
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.2s ease;
+}
+
+/* Alternancia de color en filas (Zebra Striping) */
+tbody tr:nth-child(even) {
+  background-color: var(--bg-light);
+}
+
+/* Hover suave en las filas */
+tbody tr:hover {
+  background-color: rgba(2, 51, 101, 0.04);
+}
+/* Estilos para las secciones contenedoras */
+.Deportes, .Talleres {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.Deportes h2, .Talleres h2 {
+  font-size: 2rem;
+  color: var(--blue-lasalle);
+  margin-bottom: 0.5rem;
+  border-bottom: 3px solid var(--gold-lasalle);
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.Deportes > p, .Talleres > p {
+  color: #4a5568;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Envoltorio de cuadrícula para las tarjetas */
+/* Si no quieres cambiar tu HTML, acomodará las .card automáticamente */
+.Deportes, .Talleres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.Deportes h2, .Deportes > p,
+.Talleres h2, .Talleres > p {
+  grid-column: 1 / -1; /* Mantiene el título y párrafo a ancho completo */
+}
+
+/* --- ESTILO DE LAS CARTAS (CARD) --- */
+/* --- ESTADO NORMAL (Grisáceo / Desactivado) --- */
+.card {
+  background: #f8fafc; /* Fondo gris claro suave */
+  padding: 1.8rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 4px solid #94a3b8; /* Borde superior gris */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  
+  /* Filtro para convertir todo el contenido interno a escala de grises */
+  filter: grayscale(100%);
+  opacity: 0.75; /* Ligera atenuación para reforzar el efecto */
+  
+  /* Agregamos filter y opacity a la transición suave */
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.3s ease,
+              opacity 0.3s ease,
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+  
+  cursor: pointer;
+  will-change: transform, box-shadow, filter;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #475569; /* Color de texto atenuado en reposo */
+  font-size: 1.25rem;
+}
+
+.card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* --- ESTADO HOVER (Restaura colores de La Salle) --- */
+.card:hover {
+  background: #ffffff; /* Vuelve a fondo blanco limpio */
+  filter: grayscale(0%); /* Restaura todos los colores a su estado normal */
+  opacity: 1;
+  
+  /* Agranda la tarjeta y eleva la sombra */
+  transform: scale(1.04) translateY(-4px);
+  box-shadow: 0 12px 24px rgba(2, 51, 101, 0.18);
+  
+  /* Cambia el borde al dorado de La Salle */
+  border-top-color: var(--gold-lasalle, #a98d2f);
+}
+
+.card:hover h3 {
+  color: var(--blue-lasalle, #023365); /* Título cambia al azul institucional */
+}
+/* --- ESTILOS PARA LA IMAGEN EN LAS TARJETAS --- */
+.card img {
+  width: 100%;
+  height: 160px; /* Altura uniforme para todas las fotos */
+  object-fit: cover; /* Evita que la imagen se deforme o estire */
+  border-radius: 8px;
+  margin-top: 0.8rem;
+  display: block;
+
+  /* Transición suave para el zoom de la imagen */
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Opcional: Contenedor para evitar que la imagen se salga al hacer zoom */
+.card {
+  overflow: hidden; /* Mantiene la imagen dentro de los bordes redondeados */
+}
+
+/* --- EFECTO EN HOVER PARA LA IMAGEN --- */
+.card:hover img {
+  transform: scale(1.05); /* Efecto de zoom suave en la foto al pasar el cursor */
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 768px) {
+  .oferta {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .oferta-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  th, td {
+    padding: 0.9rem 1rem;
+  }
+}
+      </style>
+
+</head>
+<body>
+        <header id="main-header"></header>
+        <section class="oferta">
+            <div class="oferta-container">
+                <h1>Oferta Educativa</h1>
+                <p>En la Preparatoria La Salle Torreón, ofrecemos una educación integral que combina excelencia académica con valores cristianos y lasallistas. Nuestro enfoque educativo está diseñado para preparar a los estudiantes para enfrentar los desafíos del mundo moderno, fomentando el desarrollo de habilidades críticas, creativas y éticas.</p>
+                <p>Nuestra oferta educativa incluye programas académicos de alta calidad, actividades extracurriculares enriquecedoras y un ambiente de aprendizaje que promueve la colaboración y el respeto. Nos comprometemos a formar líderes responsables y ciudadanos comprometidos con su comunidad.</p>
+            </div>
+            <div class="tabla">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Primer Semestre</th>
+                            <th>Segundo Semestre</th>
+                            <th>Tercer Semestre</th>
+                            <th>Cuarto Semestre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Taller de Lectura y Redacción I</td>
+                            <td>Taller de Lectura y Redacción II</td>
+                            <td>Sociales II</td>
+                            <td>Inglés IV</td>
+                        </tr>
+                        <tr>
+                            <td>Inglés I</td>
+                            <td>Matemáticas II</td>
+                            <td>Física I</td>
+                            <td>Filosofía I</td>
+                        </tr>
+                        <tr>
+                            <td>Matemáticas I</td>
+                            <td>Química I</td>
+                            <td>Biología I</td>
+                            <td>Informática</td>
+                        </tr>
+                        <tr>
+                            <td>Ciencias Sociales I</td>
+                            <td>Historia de México II</td>
+                            <td>Geografía</td>
+                            <td>Educación Física</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="Deportes">
+                <h2>Deportes</h2>
+                <p>Fomentamos la actividad física y el trabajo en equipo a través de una variedad de deportes, incluyendo fútbol, baloncesto, voleibol y atletismo. Nuestros programas deportivos están diseñados para desarrollar habilidades físicas, disciplina y espíritu deportivo.</p>
+                <div class="card">
+                   <h3>Fútbol</h3>
+                   <img src="./deporte.jpg" alt=""> 
+                </div>
+                <div class="card">
+                   <h3>Voleibol</h3> 
+                   <img src="./deporte.jpg" alt=""> 
+                </div>
+                <div class="card">
+                   <h3>Basquetbol</h3> 
+                   <img src="./deporte.jpg" alt=""> 
+                </div>
+                <div class="card">
+                   <h3>Tochito</h3> 
+                   <img src="./deporte.jpg" alt=""> 
+
+                </div>
+            </div>   
+            <div class="Talleres">
+                <h2>Talleres</h2>
+<p>Ofrecemos una amplia gama de talleres extracurriculares que permiten a los alumnos desarrollar su creatividad y talento.</p>                    <div class="card">
+                        <h3>Robótica</h3>
+                        <p>Descubre el mundo de la robótica y desarrolla habilidades en programación y diseño.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Manejo de Drones</h3>
+                        <p>Descubre el mundo de los drones y desarrolla habilidades en operación y mantenimiento.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Impresion 3D</h3>
+                        <p>Descubre el mundo de la impresión 3D y desarrolla habilidades en diseño y fabricación.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Fotografía</h3>
+                        <p>Descubre el mundo de la fotografía y desarrolla habilidades en composición y edición.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Pintura</h3>
+                        <p>Descubre el mundo de la pintura y desarrolla habilidades en técnica y expresión artística.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Inteligencia Emocional</h3>
+                        <p>Descubre el mundo de la inteligencia emocional y desarrolla habilidades en comunicación y manejo de emociones.</p>
+                    </div>
+
+            </div>    
+        </section>
+        <script src="./navbar.js"></script>
+
+</body>
+</html>
