@@ -1,11 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admisiones | Preparatoria La Salle Torreón</title>
+    <link rel="icon" href="./icon.png" type="image/png" sizes="32x32">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="./footer.css">
+    <style>
+        :root {
+            --lasalle-navy: #002B49;
+            --lasalle-blue: #005596;
+            --lasalle-gold: #EAAA00;
+            --lasalle-gold-light: #FFF3CD;
+            --lasalle-gray-bg: #F8FAFC;
+            --lasalle-card-border: #E2E8F0;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --nav-h: 30px; 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--lasalle-gray-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .admisiones {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, var(--lasalle-navy) 0%, var(--lasalle-blue) 100%);
+            min-height: 35vh;
+            margin-top: var(--nav-h);
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(0, 43, 73, 0.25);
+            border-bottom: 4px solid var(--lasalle-gold);
+        }
+
+        .admisiones h1 {
+            color: #ffffff;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .admisiones p {
+            color: #E2E8F0;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            max-width: 650px;
+            font-weight: 300;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            padding: 3.5rem 1.5rem;
+            align-items: stretch;
+            justify-content: center;
+            max-width: 1200px;
+            gap: 2rem;
+        }
+
+        .proceso {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 350px;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--lasalle-card-border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proceso::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--lasalle-navy), var(--lasalle-gold));
+        }
+
+        .proceso:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 85, 150, 0.2);
+        }
+
+        .proceso h2 {
+            color: var(--lasalle-navy);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .proceso h2 i {
+            color: var(--lasalle-gold);
+            font-size: 1.2rem;
+        }
+
+        .proceso > p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .proceso ol {
+            list-style: none;
+            counter-reset: paso-counter;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-top: auto;
+        }
+
+        .proceso ol li {
+            counter-increment: paso-counter;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .proceso ol li::before {
+            content: counter(paso-counter);
+            background-color: var(--lasalle-navy);
+            color: var(--lasalle-gold);
+            font-weight: 700;
+            font-size: 0.75rem;
+            min-width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+            border: 1px solid var(--lasalle-gold);
+        }
+
+        @media (max-width: 768px) {
+            .admisiones {
+                padding: 2.5rem 1rem;
+            }
+            section {
+                padding: 2rem 1rem;
+                gap: 1.5rem;
+            }
+            .proceso {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header id="main-header"></header>
+
+    <div class="admisiones">
+        <h1><i class="fa-solid fa-graduation-cap"></i> Admisiones</h1>
+        <p>Bienvenido a las admisiones de la Preparatoria La Salle Torreón.</p>
+    </div>
+
+    <section>
+        <div class="proceso">
+            <h2><i class="fa-solid fa-id-card"></i> Paso 1: Inscripción</h2>
+            <p>Sigue estos pasos para completar tu proceso de admisión:</p>
+            <ol>
+                <li>Completa el formulario de inscripción.</li>
+                <li>Sube los documentos requeridos.</li>
+                <li>Asiste a la entrevista de admisión.</li>
+                <li>Espera la notificación de aprobación.</li>
+            </ol>
+        </div>
+
+        <div class="proceso">
+            <h2><i class="fa-solid fa-comments"></i> Paso 2: Entrevista</h2>
+            <p>Sigue estos pasos para completar tu proceso de admisión:</p>
+            <ol>
+                <li>Completa el formulario de inscripción.</li>
+                <li>Sube los documentos requeridos.</li>
+                <li>Asiste a la entrevista de admisión.</li>
+                <li>Espera la notificación de aprobación.</li>
+            </ol>
+        </div>
+
+        <div class="proceso">
+            <h2><i class="fa-solid fa-envelope-circle-check"></i> Paso 3: Notificación</h2>
+            <p>Sigue estos pasos para completar tu proceso de admisión:</p>
+            <ol>
+                <li>Completa el formulario de inscripción.</li>
+                <li>Sube los documentos requeridos.</li>
+                <li>Asiste a la entrevista de admisión.</li>
+                <li>Espera la notificación de aprobación.</li>
+            </ol>
+        </div>
+    </section>
+
     
+<footer id="main-footer"></footer>
+    <!-- 1. SCRIPT PARA EL MENÚ RESPONSIVO (NAVBAR) -->
+    <script src="navbar.js"></script>
+    <script src="./footer.js"></script>
+    <script src="./navbar.js"></script>
 </body>
 </html>

@@ -6,6 +6,8 @@
     <link rel="icon" href="./icon.png" type="image/png" sizes="32x32">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./navbar.css">
+    <link rel="stylesheet" href="./footer.css">
+
     <style>
       :root { --nav-h: 75px; }
       /* Smooth scroll y alineación por secciones */
@@ -53,7 +55,7 @@
         width: 90%;
         color: #ffffff;
         padding: 2.5rem;
-        background: rgb(9, 69, 129); /* Fondo azul oscuro semitransparente */
+        background: rgb(31, 89, 147); /* Fondo azul oscuro semitransparente */
         backdrop-filter: blur(12px);         /* Efecto cristal / desenfoque de fondo */
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.098); /* Borde fino elegante */
@@ -139,14 +141,14 @@
   <div class="fondo"></div>
 
   <!-- Contenedores Laterales Fijos -->
-  <div class="lateral lateral-izq">
+    <!--<div class="lateral lateral-izq">
     <img src="./lat1.jpg" alt="Decoración Izquierda">
   </div>
 
   <div class="lateral lateral-der">
     <img src="./lat1.jpg" alt="Decoración Derecha">
   </div>
-
+-->
   <div class="pasos">
     <article class="paso">
       <div class="contenido">
@@ -172,7 +174,10 @@
   </div>
 </section>
 
-    <script src="./navbar.js"></script>
+<footer id="main-footer"></footer>
+    <!-- 1. SCRIPT PARA EL MENÚ RESPONSIVO (NAVBAR) -->
+    <script src="navbar.js"></script>
+    <script src="./footer.js"></script>
     <script>
       // Detección con margen para activar la animación justo a tiempo
       const obs = new IntersectionObserver((entries) => {
