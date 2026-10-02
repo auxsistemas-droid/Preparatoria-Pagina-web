@@ -10,12 +10,20 @@
     <link rel="stylesheet" href="./oferta.css">
     <link rel="stylesheet" href="./footer.css">
     <style>
-      :root {
-  --nav-h: 75px;
-  --blue-lasalle: #023365;
-  --gold-lasalle: #a98d2f;
-  --text-dark: #2c3e50;
-  --bg-light: #f8fafc;
+     :root {
+    --lasalle-navy: #002B49;
+    --lasalle-blue: #005596;
+    --lasalle-gold: #EAAA00;
+    --lasalle-gold-light: #FFF3CD;
+    --lasalle-gray-bg: #F8FAFC;
+    --lasalle-card-border: #E2E8F0;
+    --text-main: #1E293B;
+    --text-muted: #64748B;
+    --nav-h: 30px;
+    --blue-lasalle: #005596;
+    --gold-lasalle: #EAAA00;
+    --text-dark: #1E293B;
+    --bg-light: #F8FAFC; 
 }
 
 /* Contenedor Principal */
@@ -81,7 +89,7 @@ table {
 /* Encabezado de la Tabla */
 thead tr {
   background-color: var(--blue-lasalle);
-  color: #ffffff;
+  color: #030303;
 }
 
 th {
@@ -242,10 +250,90 @@ tbody tr:hover {
     padding: 0.9rem 1rem;
   }
 }
+/* ===== AGREGADO: centrado + responsivo ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+
+.oferta { width: 100%; }
+
+/* Tabla centrada */
+.tabla { max-width: 100%; margin: 0 auto; }
+th, td { text-align: center; }
+
+/* Secciones centradas (las tarjetas de la última fila quedan al centro) */
+.Deportes, .Talleres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Títulos centrados con línea dorada centrada */
+.Deportes h2, .Talleres h2 {
+  flex: 0 0 100%;
+  text-align: center;
+  border-bottom: none;
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 0.5rem;
+}
+.Deportes h2::after, .Talleres h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--gold-lasalle);
+  border-radius: 2px;
+}
+
+/* Párrafos centrados */
+.Deportes > p, .Talleres > p {
+  flex: 0 0 100%;
+  max-width: 800px;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+
+/* Tarjetas */
+.card {
+  flex: 1 1 250px;
+  max-width: 280px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .Deportes, .Talleres { padding: 0; gap: 1.25rem; }
+}
+
+@media (max-width: 600px) {
+  .oferta { padding: calc(var(--nav-h) + 1.75rem) 0.9rem 2.5rem; }
+  .oferta-container h1 { font-size: clamp(1.55rem, 7vw, 1.9rem); }
+  table { min-width: 680px; }   /* la tabla hace scroll horizontal */
+  th, td { padding: 0.8rem 0.9rem; font-size: 0.88rem; }
+  .Deportes, .Talleres { gap: 1rem; }
+  .card { flex: 1 1 100%; max-width: none; }
+  .card img { height: 180px; }
+}
+
+/* Pantallas táctiles: sin hover, tarjetas a color */
+@media (hover: none) {
+  .card {
+    filter: none;
+    opacity: 1;
+    background: #fff;
+    border-top-color: var(--gold-lasalle);
+  }
+  .card h3 { color: var(--blue-lasalle); }
+}
       </style>
 
 </head>
 <body>
+    
         <header id="main-header"></header>
         <section class="oferta">
             <div class="oferta-container">
