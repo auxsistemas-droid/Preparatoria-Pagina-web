@@ -11,8 +11,10 @@
 .slider-container {
     position: relative;
     width: 100%;
-    height: 80vh; /* Altura de la imagen */
+    margin: 0 auto;
+    aspect-ratio: 2560 / 1300;
     overflow: hidden;
+    background-color: #001e3c;
 }
 
 .slide {
@@ -33,6 +35,15 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center center;
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        aspect-ratio: auto;
+        height: calc(100vh - 100px);
+        max-height: none;
+    }
 }
 
 /* Superposición oscura */
@@ -42,7 +53,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 30, 60, 0.65); /* Azul oscuro transparente */
+    background-color: rgba(0, 30, 60, 0.65);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,16 +67,16 @@
 }
 
 .hero-content h1 {
-    font-size: 2.8rem;
+    font-size: clamp(1.8rem, 4vw, 2.6rem); /* Se adapta dinámicamente según la pantalla */
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     line-height: 1.2;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content p {
-    font-size: 1.25rem;
-    margin-bottom: 30px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 25px;
     font-weight: 300;
     line-height: 1.5;
 }
@@ -297,7 +308,11 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
-
+.carousel .grupo .card img {
+    width: 1.8rem;
+    height: 1.8rem;
+    object-fit: contain; /* útil para el logo de Megacable u otros que no sean cuadrados */
+}
 .carousel .grupo .card:hover {
     transform: translateY(-3px);
     border-color: #003366;
