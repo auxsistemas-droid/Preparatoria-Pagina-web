@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="./plstcolor.png" alt="Logo La Salle" class="footer-logo">
                     <p>Formando líderes con excelencia académica, humana y valores cristianos. "Grandes cosas son posibles".</p>
                     <div class="socials">
-                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="footer-section links">
                     <h3>Enlaces Rápidos</h3>
                     <ul>
-                        <li><a href="#"><i class="fa-solid fa-angle-right"></i> Inicio</a></li>
-                        <li><a href="#"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
-                        <li><a href="#"><i class="fa-solid fa-angle-right"></i> Oferta Educativa</a></li>
-                        <li><a href="#"><i class="fa-solid fa-angle-right"></i> Proceso de Admisión</a></li>
-                        <li><a href="#"><i class="fa-solid fa-angle-right"></i> Contacto</a></li>
+                        <li><a href="./index.html"><i class="fa-solid fa-angle-right"></i> Inicio</a></li>
+                        <li><a href="./nosotros.html"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="./oferta-educativa.html"><i class="fa-solid fa-angle-right"></i> Oferta Educativa</a></li>
+                        <li><a href="./proceso-admision.html"><i class="fa-solid fa-angle-right"></i> Proceso de Admisión</a></li>
+                        <li><a href="./contacto.html"><i class="fa-solid fa-angle-right"></i> Contacto</a></li>
                     </ul>
                 </div>
 

@@ -85,7 +85,7 @@
 .btn-hero {
     display: inline-block;
     padding: 14px 32px;
-    background-color: #d99b00; /* Dorado Lasallista */
+    background:  #0066cc;
     color: #ffffff;
     text-decoration: none;
     font-size: 1.1rem;
@@ -171,7 +171,7 @@
     display: block;
     width: 60px;
     height: 3px;
-    background-color: #d99b00; /* Dorado Lasallista */
+    background: linear-gradient(to right, #0066cc, #ff0000);
     margin: 10px auto 0;
     border-radius: 2px;
 }

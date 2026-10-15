@@ -1,441 +1,771 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oferta Educativa | Preparatoria La Salle Torreón</title>
-    <link rel="icon" href="./icon.png" type="image/png" sizes="32x32">    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="./navbar.css">
-    <link rel="stylesheet" href="./oferta.css">
-    <link rel="stylesheet" href="./footer.css">
+    <link rel="icon" href="./icon.png" type="image/png" sizes="32x32" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./navbar.css" />
+    <link rel="stylesheet" href="./oferta.css" />
+    <link rel="stylesheet" href="./footer.css" />
     <style>
-     :root {
-    --lasalle-navy: #002B49;
-    --lasalle-blue: #005596;
-    --lasalle-gold: #EAAA00;
-    --lasalle-gold-light: #FFF3CD;
-    --lasalle-gray-bg: #F8FAFC;
-    --lasalle-card-border: #E2E8F0;
-    --text-main: #1E293B;
-    --text-muted: #64748B;
-    --nav-h: 30px;
-    --blue-lasalle: #005596;
-    --gold-lasalle: #EAAA00;
-    --text-dark: #1E293B;
-    --bg-light: #F8FAFC; 
-}
+      :root {
+        --lasalle-navy: #002b49;
+        --lasalle-blue: #005596;
+        --lasalle-gold: #eaaa00;
+        --lasalle-gold-light: #fff3cd;
+        --lasalle-gray-bg: #f8fafc;
+        --lasalle-card-border: #e2e8f0;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --nav-h: 30px;
+        --blue-lasalle: #005596;
+        --gold-lasalle: #eaaa00;
+        --text-dark: #1e293b;
+        --bg-light: #f8fafc;
+      }
 
-/* Contenedor Principal */
-.oferta {
-  padding: calc(var(--nav-h) + 3rem) 2rem 4rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  font-family: system-ui, -apple-system, sans-serif;
-  color: var(--text-dark);
-}
+      /* Contenedor Principal */
+      .oferta {
+        padding: calc(var(--nav-h) + 3rem) 2rem 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: var(--text-dark);
+      }
 
-/* Cabecera / Introducción */
-.oferta-container {
-  max-width: 850px;
-  margin: 0 auto 3.5rem;
-  text-align: center;
-}
+      /* Cabecera / Introducción */
+      .oferta-container {
+        max-width: 850px;
+        margin: 0 auto 3.5rem;
+        text-align: center;
+      }
 
-.oferta-container h1 {
-  font-size: 2.4rem;
-  color: var(--blue-lasalle);
-  margin-bottom: 1.2rem;
-  position: relative;
-  display: inline-block;
-}
+      .oferta-container h1 {
+        font-size: 2.4rem;
+        color: var(--blue-lasalle);
+        margin-bottom: 1.2rem;
+        position: relative;
+        display: inline-block;
+      }
 
-/* Detalle de línea dorada bajo el título */
-.oferta-container h1::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background-color: var(--gold-lasalle);
-  border-radius: 2px;
-}
+      /* Detalle de línea dorada bajo el título */
+      .oferta-container h1::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background-color: var(--gold-lasalle);
+        border-radius: 2px;
+      }
 
-.oferta-container p {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #4a5568;
-  margin-bottom: 1rem;
-}
+      .oferta-container p {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #4a5568;
+        margin-bottom: 1rem;
+      }
 
-/* Tabla Estilizada */
-.tabla {
-  width: 100%;
-  overflow-x: auto; /* Permite scroll horizontal fluido en celulares */
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
+      /* Tabla Estilizada */
+      .tabla {
+        width: 100%;
+        overflow-x: auto; /* Permite scroll horizontal fluido en celulares */
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        user-select: none; /* Evita selección accidental de texto al hacer scroll */
+      }
+      /* Transición fluida utilizando grid y fr */
+      .tabla-wrapper {
+        display: grid;
+        grid-template-rows: 0fr; /* Altura oculta inicialmente para las filas extra */
+        transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      /* Filas visibles fijas (las primeras 4) */
+      .filas-visibles {
+        display: table-row-group;
+      }
+      /* Contenedor interno para animar suavemente el resto de filas */
+      .filas-ocultas-wrapper {
+        overflow: hidden; /* Necesario para ocultar mientras se despliega */
+      }
+      /* Contenedor interno para animar suavemente el resto de filas */
+      .filas-ocultas-wrapper {
+        overflow: hidden; /* Necesario para ocultar mientras se despliega */
+      }
+      /* Estado Expandido: cambia a 1fr para mostrar todo fluidamente */
+      .tabla.expandida .tabla-wrapper {
+        grid-template-rows: 1fr;
+      }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
+      /* Indicador con micro-interacción */
+      .tabla-indicador {
+        text-align: center;
+        padding: 0.8rem;
+        font-size: 0.85rem;
+        color: #64748b;
+        background-color: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+        font-weight: 500;
+        transition: background-color 0.2s ease;
+      }
 
-/* Encabezado de la Tabla */
-thead tr {
-  background-color: var(--blue-lasalle);
-  color: #030303;
-}
+      .tabla:hover .tabla-indicador {
+        background-color: #f1f5f9;
+      }
 
-th {
-  padding: 1.2rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border-bottom: 3px solid var(--gold-lasalle);
-  white-space: nowrap;
-}
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
 
-/* Filas y Celdas */
-td {
-  padding: 1.1rem 1.5rem;
-  font-size: 0.95rem;
-  color: #334155;
-  border-bottom: 1px solid #e2e8f0;
-  transition: background-color 0.2s ease;
-}
+      /* Encabezado de la Tabla */
+      thead tr {
+        background-color: var(--blue-lasalle);
+        color: #030303;
+      }
 
-/* Alternancia de color en filas (Zebra Striping) */
-tbody tr:nth-child(even) {
-  background-color: var(--bg-light);
-}
+      th {
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        border-bottom: 3px solid var(--gold-lasalle);
+        white-space: nowrap;
+      }
 
-/* Hover suave en las filas */
-tbody tr:hover {
-  background-color: rgba(2, 51, 101, 0.04);
-}
-/* Estilos para las secciones contenedoras */
-.Deportes, .Talleres {
-  max-width: 1200px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-  font-family: system-ui, -apple-system, sans-serif;
-}
+      /* Filas y Celdas */
+      td {
+        padding: 1.1rem 1.5rem;
+        font-size: 0.95rem;
+        color: #334155;
+        border-bottom: 1px solid #e2e8f0;
+        transition: background-color 0.2s ease;
+      }
 
-.Deportes h2, .Talleres h2 {
-  font-size: 2rem;
-  color: var(--blue-lasalle);
-  margin-bottom: 0.5rem;
-  border-bottom: 3px solid var(--gold-lasalle);
-  display: inline-block;
-  padding-bottom: 5px;
-}
+      /* Alternancia de color en filas (Zebra Striping) */
+      tbody tr:nth-child(even) {
+        background-color: var(--bg-light);
+      }
 
-.Deportes > p, .Talleres > p {
-  color: #4a5568;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
+      /* Hover suave en las filas */
+      tbody tr:hover {
+        background-color: rgba(2, 51, 101, 0.04);
+      }
+      /* Estilos para las secciones contenedoras */
+      .Deportes,
+      .Talleres {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+      }
 
-/* Envoltorio de cuadrícula para las tarjetas */
-/* Si no quieres cambiar tu HTML, acomodará las .card automáticamente */
-.Deportes, .Talleres {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
+      .Deportes h2,
+      .Talleres h2 {
+        font-size: 2rem;
+        color: var(--blue-lasalle);
+        margin-bottom: 0.5rem;
+        border-bottom: 3px solid var(--gold-lasalle);
+        display: inline-block;
+        padding-bottom: 5px;
+      }
 
-.Deportes h2, .Deportes > p,
-.Talleres h2, .Talleres > p {
-  grid-column: 1 / -1; /* Mantiene el título y párrafo a ancho completo */
-}
+      .Deportes > p,
+      .Talleres > p {
+        color: #4a5568;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
 
-/* --- ESTILO DE LAS CARTAS (CARD) --- */
-/* --- ESTADO NORMAL (Grisáceo / Desactivado) --- */
-.card {
-  background: #f8fafc; /* Fondo gris claro suave */
-  padding: 1.8rem 1.5rem;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-top: 4px solid #94a3b8; /* Borde superior gris */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  
-  /* Filtro para convertir todo el contenido interno a escala de grises */
-  filter: grayscale(100%);
-  opacity: 0.75; /* Ligera atenuación para reforzar el efecto */
-  
-  /* Agregamos filter y opacity a la transición suave */
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.3s ease,
-              opacity 0.3s ease,
-              background-color 0.3s ease,
-              border-color 0.3s ease;
-  
-  cursor: pointer;
-  will-change: transform, box-shadow, filter;
-}
+      /* Envoltorio de cuadrícula para las tarjetas */
+      /* Si no quieres cambiar tu HTML, acomodará las .card automáticamente */
+      .Deportes,
+      .Talleres {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
 
-.card h3 {
-  margin: 0 0 0.5rem 0;
-  color: #475569; /* Color de texto atenuado en reposo */
-  font-size: 1.25rem;
-}
+      .Deportes h2,
+      .Deportes > p,
+      .Talleres h2,
+      .Talleres > p {
+        grid-column: 1 / -1; /* Mantiene el título y párrafo a ancho completo */
+      }
 
-.card p {
-  margin: 0;
-  color: #64748b;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
+      /* --- ESTILO DE LAS CARTAS (CARD) --- */
+      /* --- ESTADO NORMAL (Grisáceo / Desactivado) --- */
+      .card {
+        background: #f8fafc; /* Fondo gris claro suave */
+        padding: 1.8rem 1.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-top: 4px solid #94a3b8; /* Borde superior gris */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 
-/* --- ESTADO HOVER (Restaura colores de La Salle) --- */
-.card:hover {
-  background: #ffffff; /* Vuelve a fondo blanco limpio */
-  filter: grayscale(0%); /* Restaura todos los colores a su estado normal */
-  opacity: 1;
-  
-  /* Agranda la tarjeta y eleva la sombra */
-  transform: scale(1.04) translateY(-4px);
-  box-shadow: 0 12px 24px rgba(2, 51, 101, 0.18);
-  
-  /* Cambia el borde al dorado de La Salle */
-  border-top-color: var(--gold-lasalle, #a98d2f);
-}
+        /* Filtro para convertir todo el contenido interno a escala de grises */
+        filter: grayscale(100%);
+        opacity: 0.75; /* Ligera atenuación para reforzar el efecto */
 
-.card:hover h3 {
-  color: var(--blue-lasalle, #023365); /* Título cambia al azul institucional */
-}
-/* --- ESTILOS PARA LA IMAGEN EN LAS TARJETAS --- */
-.card img {
-  width: 100%;
-  height: 160px; /* Altura uniforme para todas las fotos */
-  object-fit: cover; /* Evita que la imagen se deforme o estire */
-  border-radius: 8px;
-  margin-top: 0.8rem;
-  display: block;
+        /* Agregamos filter y opacity a la transición suave */
+        transition:
+          transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+          filter 0.3s ease,
+          opacity 0.3s ease,
+          background-color 0.3s ease,
+          border-color 0.3s ease;
 
-  /* Transición suave para el zoom de la imagen */
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
+        cursor: pointer;
+        will-change: transform, box-shadow, filter;
+      }
 
-/* Opcional: Contenedor para evitar que la imagen se salga al hacer zoom */
-.card {
-  overflow: hidden; /* Mantiene la imagen dentro de los bordes redondeados */
-}
+      .card h3 {
+        margin: 0 0 0.5rem 0;
+        color: #475569; /* Color de texto atenuado en reposo */
+        font-size: 1.25rem;
+      }
 
-/* --- EFECTO EN HOVER PARA LA IMAGEN --- */
-.card:hover img {
-  transform: scale(1.05); /* Efecto de zoom suave en la foto al pasar el cursor */
-}
+      .card p {
+        margin: 0;
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
 
-/* Ajustes Responsivos */
-@media (max-width: 768px) {
-  .oferta {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .oferta-container h1 {
-    font-size: 1.8rem;
-  }
-  
-  th, td {
-    padding: 0.9rem 1rem;
-  }
-}
-/* ===== AGREGADO: centrado + responsivo ===== */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { overflow-x: hidden; }
+      /* --- ESTADO HOVER (Restaura colores de La Salle) --- */
+      .card:hover {
+        background: #ffffff; /* Vuelve a fondo blanco limpio */
+        filter: grayscale(
+          0%
+        ); /* Restaura todos los colores a su estado normal */
+        opacity: 1;
 
-.oferta { width: 100%; }
+        /* Agranda la tarjeta y eleva la sombra */
+        transform: scale(1.04) translateY(-4px);
+        box-shadow: 0 12px 24px rgba(2, 51, 101, 0.18);
 
-/* Tabla centrada */
-.tabla { max-width: 100%; margin: 0 auto; }
-th, td { text-align: center; }
+        /* Cambia el borde al dorado de La Salle */
+        border-top-color: var(--gold-lasalle, #a98d2f);
+      }
 
-/* Secciones centradas (las tarjetas de la última fila quedan al centro) */
-.Deportes, .Talleres {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  width: 100%;
-}
+      .card:hover h3 {
+        color: var(
+          --blue-lasalle,
+          #023365
+        ); /* Título cambia al azul institucional */
+      }
+      /* --- ESTILOS PARA LA IMAGEN EN LAS TARJETAS --- */
+      .card img {
+        width: 100%;
+        height: 160px; /* Altura uniforme para todas las fotos */
+        object-fit: cover; /* Evita que la imagen se deforme o estire */
+        border-radius: 8px;
+        margin-top: 0.8rem;
+        display: block;
 
-/* Títulos centrados con línea dorada centrada */
-.Deportes h2, .Talleres h2 {
-  flex: 0 0 100%;
-  text-align: center;
-  border-bottom: none;
-  position: relative;
-  padding-bottom: 12px;
-  margin-bottom: 0.5rem;
-}
-.Deportes h2::after, .Talleres h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: var(--gold-lasalle);
-  border-radius: 2px;
-}
+        /* Transición suave para el zoom de la imagen */
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-/* Párrafos centrados */
-.Deportes > p, .Talleres > p {
-  flex: 0 0 100%;
-  max-width: 800px;
-  margin: 0 auto 1rem;
-  text-align: center;
-}
+      /* Opcional: Contenedor para evitar que la imagen se salga al hacer zoom */
+      .card {
+        overflow: hidden; /* Mantiene la imagen dentro de los bordes redondeados */
+      }
 
-/* Tarjetas */
-.card {
-  flex: 1 1 250px;
-  max-width: 280px;
-  text-align: center;
-}
+      /* --- EFECTO EN HOVER PARA LA IMAGEN --- */
+      .card:hover img {
+        transform: scale(
+          1.05
+        ); /* Efecto de zoom suave en la foto al pasar el cursor */
+      }
 
-@media (max-width: 900px) {
-  .Deportes, .Talleres { padding: 0; gap: 1.25rem; }
-}
+      /* Ajustes Responsivos */
+      @media (max-width: 768px) {
+        .oferta {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
 
-@media (max-width: 600px) {
-  .oferta { padding: calc(var(--nav-h) + 1.75rem) 0.9rem 2.5rem; }
-  .oferta-container h1 { font-size: clamp(1.55rem, 7vw, 1.9rem); }
-  table { min-width: 680px; }   /* la tabla hace scroll horizontal */
-  th, td { padding: 0.8rem 0.9rem; font-size: 0.88rem; }
-  .Deportes, .Talleres { gap: 1rem; }
-  .card { flex: 1 1 100%; max-width: none; }
-  .card img { height: 180px; }
-}
+        .oferta-container h1 {
+          font-size: 1.8rem;
+        }
 
-/* Pantallas táctiles: sin hover, tarjetas a color */
-@media (hover: none) {
-  .card {
-    filter: none;
-    opacity: 1;
-    background: #fff;
-    border-top-color: var(--gold-lasalle);
-  }
-  .card h3 { color: var(--blue-lasalle); }
-}
-      </style>
+        th,
+        td {
+          padding: 0.9rem 1rem;
+        }
+      }
+      /* ===== AGREGADO: centrado + responsivo ===== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        overflow-x: hidden;
+      }
 
-</head>
-<body>
-    
-        <header id="main-header"></header>
-        <section class="oferta">
-            <div class="oferta-container">
-                <h1>Oferta Educativa</h1>
-                <p>En la Preparatoria La Salle Torreón, ofrecemos una educación integral que combina excelencia académica con valores cristianos y lasallistas. Nuestro enfoque educativo está diseñado para preparar a los estudiantes para enfrentar los desafíos del mundo moderno, fomentando el desarrollo de habilidades críticas, creativas y éticas.</p>
-                <p>Nuestra oferta educativa incluye programas académicos de alta calidad, actividades extracurriculares enriquecedoras y un ambiente de aprendizaje que promueve la colaboración y el respeto. Nos comprometemos a formar líderes responsables y ciudadanos comprometidos con su comunidad.</p>
-            </div>
-            <div class="tabla">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Primer Semestre</th>
-                            <th>Segundo Semestre</th>
-                            <th>Tercer Semestre</th>
-                            <th>Cuarto Semestre</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Taller de Lectura y Redacción I</td>
-                            <td>Taller de Lectura y Redacción II</td>
-                            <td>Sociales II</td>
-                            <td>Inglés IV</td>
-                        </tr>
-                        <tr>
-                            <td>Inglés I</td>
-                            <td>Matemáticas II</td>
-                            <td>Física I</td>
-                            <td>Filosofía I</td>
-                        </tr>
-                        <tr>
-                            <td>Matemáticas I</td>
-                            <td>Química I</td>
-                            <td>Biología I</td>
-                            <td>Informática</td>
-                        </tr>
-                        <tr>
-                            <td>Ciencias Sociales I</td>
-                            <td>Historia de México II</td>
-                            <td>Geografía</td>
-                            <td>Educación Física</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="Deportes">
-                <h2>Deportes</h2>
-                <p>Fomentamos la actividad física y el trabajo en equipo a través de una variedad de deportes, incluyendo fútbol, baloncesto, voleibol y atletismo. Nuestros programas deportivos están diseñados para desarrollar habilidades físicas, disciplina y espíritu deportivo.</p>
-                <br>
-                <div class="card">
-                   <h3>Fútbol</h3>
-                   <img src="./deporte.jpg" alt=""> 
-                </div>
-                <div class="card">
-                   <h3>Voleibol</h3> 
-                   <img src="./deporte.jpg" alt=""> 
-                </div>
-                <div class="card">
-                   <h3>Basquetbol</h3> 
-                   <img src="./deporte.jpg" alt=""> 
-                </div>
-                <div class="card">
-                   <h3>Tochito</h3> 
-                   <img src="./deporte.jpg" alt=""> 
+      .oferta {
+        width: 100%;
+      }
 
-                </div>
-            </div>   
-            <div class="Talleres">
-                <h2>Talleres</h2>
-                <p>Ofrecemos una amplia gama de talleres extracurriculares que permiten a los alumnos desarrollar su creatividad y talento.</p>                    
-                <br>
-                <div class="card">                   
-                    <h3>Robótica</h3>
-                    <p>Descubre el mundo de la robótica y desarrolla habilidades en programación y diseño.</p>
-                </div>
-                <div class="card">
-                     <h3>Manejo de Drones</h3>
-                     <p>Descubre el mundo de los drones y desarrolla habilidades en operación y mantenimiento.</p>
-                </div>
-                <div class="card">
-                     <h3>Impresion 3D</h3>
-                     <p>Descubre el mundo de la impresión 3D y desarrolla habilidades en diseño y fabricación.</p>
-                </div>
-                <div class="card">
-                     <h3>Fotografía</h3>
-                     <p>Descubre el mundo de la fotografía y desarrolla habilidades en composición y edición.</p>
-                </div>
-                <div class="card">
-                     <h3>Pintura</h3>
-                     <p>Descubre el mundo de la pintura y desarrolla habilidades en técnica y expresión artística.</p>
-                </div>
-                <div class="card">
-                     <h3>Inteligencia Emocional</h3>
-                     <p>Descubre el mundo de la inteligencia emocional y desarrolla habilidades en comunicación y manejo de emociones.</p>
-                </div>
-            </div>    
-        </section>
-        <script src="./navbar.js"></script>
+      /* Tabla centrada */
+      .tabla {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      th,
+      td {
+        text-align: center;
+      }
 
-<footer id="main-footer"></footer>
+      /* Secciones centradas (las tarjetas de la última fila quedan al centro) */
+      .Deportes,
+      .Talleres {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        width: 100%;
+      }
+
+      /* Títulos centrados con línea dorada centrada */
+      .Deportes h2,
+      .Talleres h2 {
+        flex: 0 0 100%;
+        text-align: center;
+        border-bottom: none;
+        position: relative;
+        padding-bottom: 12px;
+        margin-bottom: 0.5rem;
+      }
+      .Deportes h2::after,
+      .Talleres h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: var(--gold-lasalle);
+        border-radius: 2px;
+      }
+
+      /* Párrafos centrados */
+      .Deportes > p,
+      .Talleres > p {
+        flex: 0 0 100%;
+        max-width: 800px;
+        margin: 0 auto 1rem;
+        text-align: center;
+      }
+
+      /* Tarjetas */
+      .card {
+        flex: 1 1 250px;
+        max-width: 280px;
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .Deportes,
+        .Talleres {
+          padding: 0;
+          gap: 1.25rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .oferta {
+          padding: calc(var(--nav-h) + 1.75rem) 0.9rem 2.5rem;
+        }
+        .oferta-container h1 {
+          font-size: clamp(1.55rem, 7vw, 1.9rem);
+        }
+        table {
+          min-width: 680px;
+        } /* la tabla hace scroll horizontal */
+        th,
+        td {
+          padding: 0.8rem 0.9rem;
+          font-size: 0.88rem;
+        }
+        .Deportes,
+        .Talleres {
+          gap: 1rem;
+        }
+        .card {
+          flex: 1 1 100%;
+          max-width: none;
+        }
+        .card img {
+          height: 180px;
+        }
+      }
+
+      /* Pantallas táctiles: sin hover, tarjetas a color */
+      @media (hover: none) {
+        .card {
+          filter: none;
+          opacity: 1;
+          background: #fff;
+          border-top-color: var(--gold-lasalle);
+        }
+        .card h3 {
+          color: var(--blue-lasalle);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="main-header"></header>
+    <section class="oferta">
+      <div class="oferta-container">
+        <h1>Oferta Educativa</h1>
+        <p>
+          Una formacion concebida desde el paradigma de la Educación Integral,
+          donde el educando, como persona y primer responsable de su desarrollo,
+          encuentra sentido a su existencia en la relacion de la busqueda de la
+          tracendencia, a través de la adquisición de conocimientos, la creacion
+          de hábitos, el desarrollo de habilidades y destrezas, y la vivencia de
+          valores y actitudes.
+        </p>
+        <p>
+          Como institucion, ofrecemos a nuestros estudiantes diversos talleres y
+          actividades deportivas, que pueden elegir de acuerdoa a sus aptitudes,
+          intereses y preferencias.
+        </p>
+      </div>
+      <div class="tabla" id="tablaMaterias">
+        <table>
+          <thead>
+            <tr>
+              <th>Primer Semestre</th>
+              <th>Segundo Semestre</th>
+              <th>Tercer Semestre</th>
+              <th>Cuarto Semestre</th>
+            </tr>
+          </thead>
+
+          <!-- Primeras 4 filas siempre visibles -->
+          <tbody class="filas-visibles">
+            <tr>
+              <td>La Materia y sus interacciones</td>
+              <td>Conservación de la Energía</td>
+              <td>Ecosistemas: Interacciones, Energía y Dinámica</td>
+              <td>
+                Organismos, Estructuras y Procesos, Herencia y Evolución
+                Biológica
+              </td>
+            </tr>
+            <tr>
+              <td>Ciencias Sociales I</td>
+              <td>Conciencia Histórica I</td>
+              <td>Conciencia Histórica II</td>
+              <td>Conciencia Histórica III</td>
+            </tr>
+            <tr>
+              <td>Cultura Digital I</td>
+              <td>Ciencias Sociales II</td>
+              <td>Pensamiento Matemático III</td>
+              <td>Ciencias sociales III</td>
+            </tr>
+            <tr>
+              <td>Pensamiento Matemático I</td>
+              <td>Cultura Digital II</td>
+              <td>Lengua y Comunicación</td>
+              <td>Ingles IV</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Contenedor dinámico animado para el resto de la tabla -->
+        <div class="tabla-wrapper">
+          <div class="filas-ocultas-wrapper">
+            <table>
+              <tbody class="filas-ocultas">
+                <tr>
+                  <td>Lengua y Comunicación I</td>
+                  <td>Pensamiento Matemático II</td>
+                  <td>Ingles III</td>
+                  <td>La Energia en los Procesos de la Vida diaria</td>
+                </tr>
+                <tr>
+                  <td>Ingles I</td>
+                  <td>Lengua y Comunicación II</td>
+                  <td>Humanidades III</td>
+                  <td>Taller de Cultura Digital</td>
+                </tr>
+                <tr>
+                  <td>Humanidades I</td>
+                  <td>Inglés II</td>
+                  <td>Reacciones Químicas</td>
+                  <td>Temas Selectos de Matemáticas II</td>
+                </tr>
+                <tr>
+                  <td>Laboratorio de Investigación</td>
+                  <td>Humanidades II</td>
+                  <td>Temas Selectos de Matemáticas I</td>
+                  <td>Pensamiento Literario</td>
+                </tr>
+                <tr>
+                  <td>Formación Amplia (deportes)</td>
+                  <td>Formacion Amplia (deportes)</td>
+                  <td>Taller de ciencias II</td>
+                  <td>Espacio y Sociedad</td>
+                </tr>
+                <tr>
+                  <td>Formacion Ampliada (talleres)</td>
+                  <td>Formacion Ampliada (talleres)</td>
+                  <td>Formacion Ampliada</td>
+                  <td>Formacion Ampliada</td>
+                </tr>
+                <tr>
+                  <td>Formacion de Valores</td>
+                  <td>Formacion de Valores</td>
+                  <td>Formacion de Valores</td>
+                  <td>Formacion de Valores</td>
+                </tr>
+                <tr>
+                  <td>Desarrollo de Habilidades del Pensamiento</td>
+                  <td>Orientación Vocacional</td>
+                  <td>Cultura Vocacional</td>
+                  <td>Cultura Vocacional</td>
+                </tr>
+                <tr>
+                  <td>Cultura Vocacional</td>
+                  <td>Cultura Vocacional</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tabla-indicador" id="indicadorTexto">
+          Desplegar mapa curricular completo
+        </div>
+      </div>
+      <div class="Deportes">
+        <h2>Deportes</h2>
+        <p>
+          Fomentamos la actividad física y el trabajo en equipo a través de una
+          variedad de deportes, incluyendo fútbol, baloncesto, voleibol y
+          atletismo. Nuestros programas deportivos están diseñados para
+          desarrollar habilidades físicas, disciplina y espíritu deportivo.
+        </p>
+        <br />
+        <div class="card">
+          <h3>Acondicionamiento Físico</h3>
+          <img src="./deporte.jpg" alt="" />
+        </div>
+        <div class="card">
+          <h3>Baloncesto</h3>
+          <img src="./Imagenes/IMG_1156_1.webp" alt="" />
+        </div>
+        <div class="card">
+          <h3>Techito</h3>
+          <img src="./Imagenes/IMG_0541_1.webp" alt="" />
+        </div>
+        <div class="card">
+          <h3>Voleibol</h3>
+          <img src="./Imagenes/IMG_1162.webp" alt="" />
+        </div>
+        <div class="card">
+          <h3>Futbol</h3>
+          <img src="./Imagenes/IMG_0515.webp" alt="" />
+        </div>
+        <div class="card">
+          <h3>Ajedrez</h3>
+          <img src="./Imagenes/ajedrez.webp" alt="" />
+        </div>
+        <div class="card">
+          <h3>TaeKwonDo</h3>
+          <img src="./Imagenes/Taekwondo.webp" alt="" />
+        </div>
+        <div class="card">
+          <h3>Atletismo</h3>
+          <img src="./Imagenes/Atletismo.webp" alt="" />
+        </div>
+      </div>
+      <div class="Talleres">
+        <h2>Talleres</h2>
+        <p>
+          Impulsamos la formación integral de nuestros alumnos mediante
+          experiencias artísticas, culturales y sociales que fortalecen la
+          identidad y fraternidad lasallista.
+        </p>
+        <br />
+        <div class="card">
+          <h3>Teatro</h3>
+          <p>
+            Explora la expresión corporal, la proyección de la voz y la puesta
+            en escena para desarrollar autoexpresión y confianza ante el
+            público.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Coro e instrumentación Musical</h3>
+          <p>
+            Perfecciona la técnica vocal y la ejecución instrumental
+            colaborativa para interpretar repertorios que enriquecen los eventos
+            comunitarios.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Robótica</h3>
+          <p>
+            Diseña, programa y construye prototipos automatizados aplicando
+            principios de mecatrónica y pensamiento lógico-matemático.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Producción Audiovisual y Fotografía</h3>
+          <p>
+            Aprende lenguajes visuales, manejo de cámara, iluminación y edición
+            digital para narrar historias impactantes de alto contenido
+            creativo.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Multicultural</h3>
+          <p>
+            Amplía tu visión global compartiendo tradiciones, idiomas y
+            costumbres para promover el respeto a la diversidad y la empatía
+            internacional.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Debate y Liderazgo</h3>
+          <p>
+            Fortalece tus competencias de oratoria, argumentación estructurada y
+            negociación orientadas a la toma de decisiones y al servicio a la
+            comunidad.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Book Club</h3>
+          <p>
+            Fomenta el análisis crítico y la apreciación literaria a través de
+            lecturas compartidas y diálogos que enriquecen el pensamiento
+            reflexivo.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Emprendimiento</h3>
+          <p>
+            Transforma ideas en proyectos sostenibles aprendiendo sobre modelos
+            de negocio, innovación con sentido social y finanzas básicas.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Grupo Salla</h3>
+          <p>
+            Vive los valores lasallistas de fe, fraternidad y servicio
+            participando activamente en proyectos de impacto comunitario y
+            voluntariado.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Relaciones Públicas y Protocolo</h3>
+          <p>
+            Domina las técnicas de comunicación corporativa, la etiqueta
+            profesional y la gestión de imagen en la organización de eventos
+            institucionales.
+          </p>
+        </div>
+      </div>
+      <div class="Talleres">
+        <h2>Talleres Especializados</h2>
+        <p>
+          Capacitación técnica y preprofesional avanzada para dotar a los
+          estudiantes de herramientas metodológicas e innovadoras frente a los
+          retos universitarios.
+        </p>
+        <br />
+        <div class="card">
+          <h3>Data Analytics</h3>
+          <p>
+            Aprende a recopilar, limpiar y visualizar grandes volúmenes de datos
+            para tomar decisiones estratégicas fundamentadas en información
+            real.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Solidworks</h3>
+          <p>
+            Modelado 3D profesional e ingeniería asistida por computadora para
+            el diseño detallado de piezas, ensamblajes y prototipos
+            industriales.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Google suite</h3>
+          <p>
+            Optimiza la productividad académica mediante el dominio avanzado de
+            herramientas colaborativas en la nube, gestión de datos y
+            automatización.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Temas Selectos de salud</h3>
+          <p>
+            Explora conceptos fundamentales de anatomía, primeros auxilios y
+            medicina preventiva como preparación clave para las áreas
+            biomédicas.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Preparación para certificación de Inglés</h3>
+          <p>
+            Entrenamiento enfocado en dominar las habilidades de lectura,
+            escritura, escucha y habla requeridas para exámenes internacionales
+            como Cambridge o TOEFL.
+          </p>
+        </div>
+      </div>
+    </section>
+    <script src="./navbar.js"></script>
+
+    <footer id="main-footer"></footer>
     <!-- 1. SCRIPT PARA EL MENÚ RESPONSIVO (NAVBAR) -->
     <script src="navbar.js"></script>
     <script src="./footer.js"></script>
-</body>
+    <script>
+      const contenedorTabla = document.getElementById("tablaMaterias");
+      const indicador = document.getElementById("indicadorTexto");
+
+      contenedorTabla.addEventListener("click", function () {
+        this.classList.toggle("expandida");
+
+        if (this.classList.contains("expandida")) {
+          indicador.textContent = " Haz clic para contraer la tabla";
+        } else {
+          indicador.textContent = "Desplegar mapa curricular completo";
+        }
+      });
+    </script>
+  </body>
 </html>

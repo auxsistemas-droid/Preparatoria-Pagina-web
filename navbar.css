@@ -70,7 +70,7 @@ header {
 
 .line-top {
     height: 10px;
-    background-color: #0066cc;
+    background: linear-gradient(to right, #0066cc, #ff0000);
     width: 100%;
 }
 
