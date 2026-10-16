@@ -24,7 +24,7 @@
         --text-muted: #64748b;
         --nav-h: 30px;
         --blue-lasalle: #005596;
-        --gold-lasalle: #eaaa00;
+        --gold-lasalle: linear-gradient(to right, #0066cc, #ff0000);
         --text-dark: #1e293b;
         --bg-light: #f8fafc;
       }
@@ -65,7 +65,7 @@
         transform: translateX(-50%);
         width: 60px;
         height: 4px;
-        background-color: var(--gold-lasalle);
+        background: linear-gradient(to right, #0066cc, #ff0000);
         border-radius: 2px;
       }
 
@@ -79,31 +79,31 @@
       /* Tabla Estilizada */
       .tabla {
         width: 100%;
-        overflow-x: auto; /* Permite scroll horizontal fluido en celulares */
+        overflow-x: auto;
         background: #ffffff;
         border-radius: 12px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         border: 1px solid rgba(0, 0, 0, 0.08);
         cursor: pointer;
-        user-select: none; /* Evita selección accidental de texto al hacer scroll */
+        user-select: none;
+        table-layout: fixed;
       }
       /* Transición fluida utilizando grid y fr */
       .tabla-wrapper {
         display: grid;
-        grid-template-rows: 0fr; /* Altura oculta inicialmente para las filas extra */
+        grid-template-rows: 0fr;
         transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
       /* Filas visibles fijas (las primeras 4) */
       .filas-visibles {
         display: table-row-group;
       }
-      /* Contenedor interno para animar suavemente el resto de filas */
       .filas-ocultas-wrapper {
-        overflow: hidden; /* Necesario para ocultar mientras se despliega */
+        overflow: hidden;
       }
       /* Contenedor interno para animar suavemente el resto de filas */
       .filas-ocultas-wrapper {
-        overflow: hidden; /* Necesario para ocultar mientras se despliega */
+        overflow: hidden;
       }
       /* Estado Expandido: cambia a 1fr para mostrar todo fluidamente */
       .tabla.expandida .tabla-wrapper {
@@ -129,7 +129,7 @@
       table {
         width: 100%;
         border-collapse: collapse;
-        text-align: left;
+        text-align: center;
       }
 
       /* Encabezado de la Tabla */
@@ -138,13 +138,25 @@
         color: #030303;
       }
 
+      th,
+      td {
+        width: 25%;
+        padding: 1.1rem 1.5rem;
+        font-size: 0.95rem;
+        color: #000000;
+        border-bottom: 1px solid #e2e8f0;
+        transition: background-color 0.2s ease;
+        /* Evita que textos muy largos deformen el ancho de las celdas */
+        word-wrap: break-word;
+      }
+
       th {
         padding: 1.2rem 1.5rem;
         font-size: 1rem;
         font-weight: 600;
         letter-spacing: 0.5px;
-        border-bottom: 3px solid var(--gold-lasalle);
-        white-space: nowrap;
+        border-bottom: 3px solid rgb(191, 208, 247);
+        white-space: normal;
       }
 
       /* Filas y Celdas */
@@ -214,16 +226,16 @@
       /* --- ESTILO DE LAS CARTAS (CARD) --- */
       /* --- ESTADO NORMAL (Grisáceo / Desactivado) --- */
       .card {
-        background: #f8fafc; /* Fondo gris claro suave */
+        background: #f8fafc;
         padding: 1.8rem 1.5rem;
         border-radius: 12px;
         border: 1px solid rgba(0, 0, 0, 0.08);
-        border-top: 4px solid #94a3b8; /* Borde superior gris */
+        border-top: 4px solid #94a3b8;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 
         /* Filtro para convertir todo el contenido interno a escala de grises */
         filter: grayscale(100%);
-        opacity: 0.75; /* Ligera atenuación para reforzar el efecto */
+        opacity: 0.75;
 
         /* Agregamos filter y opacity a la transición suave */
         transition:
@@ -240,7 +252,7 @@
 
       .card h3 {
         margin: 0 0 0.5rem 0;
-        color: #475569; /* Color de texto atenuado en reposo */
+        color: #475569;
         font-size: 1.25rem;
       }
 
@@ -253,10 +265,8 @@
 
       /* --- ESTADO HOVER (Restaura colores de La Salle) --- */
       .card:hover {
-        background: #ffffff; /* Vuelve a fondo blanco limpio */
-        filter: grayscale(
-          0%
-        ); /* Restaura todos los colores a su estado normal */
+        background: #ffffff;
+        filter: grayscale(0%);
         opacity: 1;
 
         /* Agranda la tarjeta y eleva la sombra */
@@ -264,7 +274,7 @@
         box-shadow: 0 12px 24px rgba(2, 51, 101, 0.18);
 
         /* Cambia el borde al dorado de La Salle */
-        border-top-color: var(--gold-lasalle, #a98d2f);
+        border-top-color: var(--lasalle-blue, #151103);
       }
 
       .card:hover h3 {
