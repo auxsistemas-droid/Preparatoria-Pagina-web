@@ -98,7 +98,7 @@ footer {
 }
 
 .socials a:hover {
-  background-color: #d99b00;
+  background: linear-gradient(to right, #0066cc, #ff0000);
   transform: translateY(-3px);
 }
 
@@ -114,7 +114,7 @@ footer {
 }
 
 .footer-section.links ul li a {
-  color: #cccccc;
+  color: #eceff0;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -126,11 +126,11 @@ footer {
 
 .footer-section.links ul li a i {
   font-size: 0.8rem;
-  color: #d99b00;
+  color: #e9eaec;
 }
 
 .footer-section.links ul li a:hover {
-  color: #ffffff;
+  color: #c0c4d5;
   transform: translateX(5px);
 }
 
@@ -145,7 +145,7 @@ footer {
 }
 
 .footer-section.contact p i {
-  color: #d99b00;
+  color: #138fb9;
   font-size: 1.1rem;
   margin-top: 3px;
 }

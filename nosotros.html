@@ -1,199 +1,394 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./icon.png" type="image/png" sizes="32x32">    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="./navbar.css">
-    <link rel="stylesheet" href="./footer.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./icon.png" type="image/png" sizes="32x32" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./navbar.css" />
+    <link rel="stylesheet" href="./footer.css" />
 
     <style>
-      :root { --nav-h: 75px; }
-      /* Smooth scroll y alineación por secciones */
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+      :root {
+        --nav-h: 75px;
+        --primary-blue: #1f5993;
+        --primary-gold: #a98d2f;
+        --gold-glow: rgba(169, 141, 47, 0.25);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
       html {
         scroll-behavior: smooth;
-        scroll-snap-type: y proximity;      /* menos agresivo que mandatory */
-        scroll-padding-top: var(--nav-h); 
+        scroll-snap-type: y proximity;
+        scroll-padding-top: var(--nav-h);
+        font-family:
+          "Plus Jakarta Sans",
+          system-ui,
+          -apple-system,
+          sans-serif;
       }
 
-      .nosotros { 
-        position: relative;
-      }
-
-      .fondo {
-        position: sticky;
-        top: var(--nav-h);                  /* se pega debajo del navbar, no detrás */
-        height: calc(100vh - var(--nav-h));
+      body {
         background-color: #ffffff;
-        /* Aceleración por hardware para el fondo */
-        will-change: transform;
-        transform: translateZ(0);
+        color: #ffffff;
+        overflow-x: hidden;
       }
 
-      .fondo::after { 
-        display: none; 
+      .nosotros {
+        position: relative;
+        width: 100%;
+      }
+
+      /* Fondo delimitado únicamente dentro de la sección nosotros */
+      .fondo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        background-image:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(31, 89, 147, 0.08) 0%,
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 85% 80%,
+            rgba(169, 141, 47, 0.08) 0%,
+            transparent 45%
+          );
+        z-index: 0;
       }
 
       .pasos {
         position: relative;
-        z-index: 1;
-        margin-top: calc(-100vh + var(--nav-h));
+        z-index: 2;
       }
 
       .paso {
         min-height: calc(100vh - var(--nav-h));
+        height: calc(100vh - var(--nav-h));
         scroll-snap-align: start;
+        scroll-snap-stop: always;
         display: flex;
         align-items: center;
         justify-content: center;
-        /* Encaja cada paso perfectamente en pantalla */
+        padding: 2rem 1rem;
       }
 
+      /* Tarjeta de contenido */
       .contenido {
-        max-width: 650px;
-        width: 90%;
+        position: relative;
+        max-width: 680px;
+        width: 100%;
         color: #ffffff;
-        padding: 2.5rem;
-        background: rgb(31, 89, 147); /* Fondo azul oscuro semitransparente */
-        backdrop-filter: blur(12px);         /* Efecto cristal / desenfoque de fondo */
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.098); /* Borde fino elegante */
-        border-left: 5px solid #a98d2f;     /* Detalle dorado de marca en la izquierda */
-        border-radius: 16px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        padding: 3rem 2.5rem;
+        background: linear-gradient(
+          135deg,
+          rgba(31, 89, 147, 0.95) 0%,
+          rgba(20, 60, 100, 0.98) 100%
+        );
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-left: 6px solid #022968;
+        border-radius: 20px;
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.25),
+          0 0 40px rgba(31, 89, 147, 0.2);
 
         opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(40px) scale(0.96);
+        transition:
+          opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         will-change: opacity, transform;
-    }
+      }
 
-        /* Opcional: Estilo rápido para los títulos dentro del cuadro */
-        .contenido h2 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
+      .contenido::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(
+          circle,
+          rgba(169, 141, 47, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 0 20px 0 100%;
+        pointer-events: none;
+      }
+
+      .paso.activo .contenido {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .titulo-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 1.25rem;
+      }
+
+      .titulo-box i {
+        font-size: 1.5rem;
+        color: #f7f5ee;
+        background: rgba(169, 141, 47, 0.15);
+        padding: 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(169, 141, 47, 0.3);
+      }
+
+      .contenido h2 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
         color: #ffffff;
+        position: relative;
+        display: inline-block;
+      }
+
+      .contenido p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.92);
+        font-weight: 400;
+      }
+
+      .img-wrapper {
+        position: relative;
+        margin-top: 1.8rem;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        border: 2px solid rgba(169, 141, 47, 0.4);
+      }
+
+      .contenido img {
+        display: block;
+        width: 100%;
+        max-height: 220px;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .paso.activo .contenido img:hover {
+        transform: scale(1.04);
+      }
+
+      /* Indicador de Secciones */
+      .dot-nav {
+        position: fixed;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(31, 89, 147, 0.3);
+        border: 2px solid #0151b4;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .dot.active {
+        background: #e90000;
+        height: 28px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px var(--gold-glow);
+      }
+
+      #main-footer {
+        position: relative;
+        z-index: 10;
+        scroll-snap-align: start;
+      }
+
+      .lateral {
+        position: fixed;
+        top: var(--nav-h);
+        height: calc(100vh - var(--nav-h));
+        width: 220px;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .lateral-izq {
+        left: 0;
+      }
+      .lateral-der {
+        right: 0;
+      }
+
+      .lateral img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0.85;
+      }
+
+      @media (max-width: 1024px) {
+        .lateral,
+        .dot-nav {
+          display: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .contenido {
+          padding: 2rem 1.5rem;
+        }
+
+        .contenido h2 {
+          font-size: 1.75rem;
         }
 
         .contenido p {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: rgba(255, 255, 255, 0.9);
+          font-size: 1rem;
+          line-height: 1.6;
+        }
       }
-
-      .paso.activo .contenido { 
-        opacity: 1; 
-        transform: translateY(0); 
-      }
-      .contenido img {
-        display: block;         
-        max-width: 200px;        
-        width: 100%;             
-        height: auto;            
-        margin: 1.5rem auto 0;  
-        border-radius: 8px;
-    }
-   /* Estilo base para ambos laterales fijos */
-.lateral {
-  position: fixed;
-  top: var(--nav-h, 75px);            /* Comienza justo debajo de tu navbar */
-  height: calc(100vh - var(--nav-h, 75px)); /* Ocupa todo el alto visible restante */
-  width: 220px;                       /* Ajusta el ancho que deseas que cubra */
-  z-index: 10;                        /* Queda encima del fondo y los divs */
-  pointer-events: none;               /* Permite hacer scroll/clic a través */
-}
-
-/* Pegado total al borde izquierdo */
-.lateral-izq {
-  left: 0;
-}
-
-/* Pegado total al borde derecho */
-.lateral-der {
-  right: 0;
-}
-
-/* La imagen ocupa el 100% del alto y ancho del contenedor */
-.lateral img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;                  /* Cubre todo el espacio sin deformarse */
-  display: block;
-}
-
-/* Ocultar en dispositivos móviles/tablets para que no tapen el texto */
-@media (max-width: 1024px) {
-  .lateral {
-    display: none;
-  }
-}
-    
     </style>
     <title>Nosotros | Preparatoria La Salle Torreón</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header id="main-header"></header>
 
+    <div class="dot-nav" id="dotNav">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
     <section class="nosotros">
-  <div class="fondo"></div>
+      <div class="fondo"></div>
 
-  <!-- Contenedores Laterales Fijos -->
-    <!--<div class="lateral lateral-izq">
-    <img src="./lat1.jpg" alt="Decoración Izquierda">
-  </div>
-
-  <div class="lateral lateral-der">
-    <img src="./lat1.jpg" alt="Decoración Derecha">
-  </div>
--->
-  <div class="pasos">
-    <article class="paso">
-      <div class="contenido">
-        <h2>Quiénes somos</h2>
-        <p>Una institución de inspiración cristiana con carisma lasallista y más de 300 años de tradición educativa. Formamos parte de una red global presente en 82 países, comprometida con la excelencia académica, la innovación y el servicio a la comunidad.</p>
-        <img src="./san-juan-bautista-de-la-salle.png" alt="San Juan Bautista">
+      <!-- Contenedores Laterales Fijos -->
+      <!--
+      <div class="lateral lateral-izq">
+        <img src="./lat1.jpg" alt="Decoración Izquierda">
       </div>
-    </article>
 
-    <article class="paso">
-      <div class="contenido">
-        <h2>Misión</h2>
-        <p>Coadyuvar a la formación integral de los alumnos mediante una sólida base académica y valores humanos y evangélicos, orientados a la justicia, la paz y la atención a los más necesitados.</p>
+      <div class="lateral lateral-der">
+        <img src="./lat1.jpg" alt="Decoración Derecha">
       </div>
-    </article>
+      -->
 
-    <article class="paso">
-      <div class="contenido">
-        <h2>Visión</h2>
-        <p>Ser una fuerza viva y transformadora en la sociedad, impulsando un espíritu comunitario que prepare profesionales con proyección internacional, capaces de responder a las exigencias socioeconómicas y culturales de México y el mundo.</p>
+      <div class="pasos">
+        <article class="paso">
+          <div class="contenido">
+            <div class="titulo-box">
+              <i class="fa-solid fa-users"></i>
+              <h2>Quiénes somos</h2>
+            </div>
+            <p>
+              Una institución de inspiración cristiana con carisma lasallista y
+              más de 300 años de tradición educativa. Formamos parte de una red
+              global presente en 82 países, comprometida con la excelencia
+              académica, la innovación y el servicio a la comunidad.
+            </p>
+            <div class="img-wrapper">
+              <img src="./Imagenes/FOTO 5 .webp" alt="San Juan Bautista" />
+            </div>
+          </div>
+        </article>
+
+        <article class="paso">
+          <div class="contenido">
+            <div class="titulo-box">
+              <i class="fa-solid fa-bullseye"></i>
+              <h2>Misión</h2>
+            </div>
+            <p>
+              Coadyuvar a la formación integral de los alumnos mediante una
+              sólida base académica y valores humanos y evangélicos, orientados
+              a la justicia, la paz y la atención a los más necesitados.
+            </p>
+            <div class="img-wrapper">
+              <img src="./Imagenes/FOTO 9 _1.webp" alt="San Juan Bautista" />
+            </div>
+          </div>
+        </article>
+
+        <article class="paso">
+          <div class="contenido">
+            <div class="titulo-box">
+              <i class="fa-solid fa-eye"></i>
+              <h2>Visión</h2>
+            </div>
+            <p>
+              Ser una fuerza viva y transformadora en la sociedad, impulsando un
+              espíritu comunitario que prepare profesionales con proyección
+              internacional, capaces de responder a las exigencias
+              socioeconómicas y culturales de México y el mundo.
+            </p>
+            <div class="img-wrapper">
+              <img src="./Imagenes/FOTO 7_1.webp" alt="San Juan Bautista" />
+            </div>
+          </div>
+        </article>
       </div>
-    </article>
-  </div>
-</section>
+    </section>
 
-<footer id="main-footer"></footer>
-    <!-- 1. SCRIPT PARA EL MENÚ RESPONSIVO (NAVBAR) -->
+    <footer id="main-footer"></footer>
+
     <script src="navbar.js"></script>
     <script src="./footer.js"></script>
     <script>
-      // Detección con margen para activar la animación justo a tiempo
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('activo');
-          } else {
-            e.target.classList.remove('activo');
-          }
-        });
-      }, { 
-        threshold: 0.4,
-        rootMargin: "0px 0px -10% 0px"
-      });
+      const pasos = document.querySelectorAll(".paso");
+      const dots = document.querySelectorAll(".dot");
 
-      document.querySelectorAll('.paso').forEach(p => obs.observe(p));
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("activo");
+
+              const index = Array.from(pasos).indexOf(e.target);
+              dots.forEach((dot, idx) => {
+                dot.classList.toggle("active", idx === index);
+              });
+            } else {
+              e.target.classList.remove("activo");
+            }
+          });
+        },
+        {
+          threshold: 0.5,
+          rootMargin: "0px",
+        },
+      );
+
+      pasos.forEach((p) => obs.observe(p));
+
+      dots.forEach((dot, idx) => {
+        dot.addEventListener("click", () => {
+          pasos[idx].scrollIntoView({ behavior: "smooth" });
+        });
+      });
     </script>
-</body>
+  </body>
 </html>

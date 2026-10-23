@@ -1,13 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const footerContainer = document.getElementById('main-footer');
-    
-    if (footerContainer) {
-        footerContainer.innerHTML = `
+document.addEventListener("DOMContentLoaded", () => {
+  const footerContainer = document.getElementById("main-footer");
+
+  if (footerContainer) {
+    footerContainer.innerHTML = `
             <div class="footer-content">
                 <!-- Columna 1: Identidad -->
                 <div class="footer-section about">
                     <img src="./plstcolor.png" alt="Logo La Salle" class="footer-logo">
-                    <p>Formando líderes con excelencia académica, humana y valores cristianos. "Grandes cosas son posibles".</p>
+                    <p>Formando líderes con excelencia académica, humana y valores cristianos.</p>
                     <div class="socials">
                         <a href="" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -42,5 +42,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>&copy; ${new Date().getFullYear()} Preparatoria La Salle Torreón. Todos los derechos reservados.</p>
             </div>
         `;
-    }
+  }
 });

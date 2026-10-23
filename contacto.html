@@ -15,7 +15,7 @@
       :root {
         --lasalle-navy: #002b49;
         --lasalle-blue: #005596;
-        --lasalle-gold: #eaaa00;
+        --lasalle-gold: #138fb9;
         --lasalle-gold-light: #fff3cd;
         --lasalle-gray-bg: #f8fafc;
         --lasalle-card-border: #e2e8f0;
@@ -121,6 +121,7 @@
         font-weight: 700;
         position: relative;
         padding-bottom: 0.5rem;
+        border-bottom: 3px solid var(--gold-lasalle);
       }
 
       .contacto-info h3::after {
@@ -130,7 +131,6 @@
         bottom: 0;
         width: 35px;
         height: 3px;
-        background-color: var(--lasalle-gold);
         border-radius: 2px;
       }
 
@@ -237,26 +237,34 @@
     <main class="contacto">
       <div class="contacto-grid">
         <div class="contacto-info">
-          <h3>Escríbenos</h3>
+          <h3>Contactanos</h3>
           <ul class="info-lista">
             <li>
-              <i class="fa-solid fa-location-dot"></i> Av. Universidad 123,
-              Torreón, Coahuila
+              <i class="fa-solid fa-location-dot"></i> Calz. Río Nazas 130,
+              Villa Jardín, Torreón, Coahuila
             </li>
-            <li><i class="fa-solid fa-phone"></i> +52 123 456 7890</li>
-            <li><i class="fa-solid fa-envelope"></i> info@lasalle.edu.mx</li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <a
+                href="https://wa.me/528717178714"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                +52 8717178714
+              </a>
+            </li>
+            <a href="mailto:prepalasalle@ulsalaguna.edu.mx"
+              ><li>
+                <i class="fa-solid fa-envelope"></i>
+                prepalasalle@ulsalaguna.edu.mx
+              </li>
+            </a>
+            <li>
+              <i class="fa-solid fa-comment"></i>
+              Horario de Atención 8:00 AM - 4:00 PM
+            </li>
+            <p>Estado: <span id="estado-horario"></span></p>
           </ul>
-
-          <form class="contacto-form">
-            <input type="text" placeholder="Nombre completo" required />
-            <input type="email" placeholder="Correo electrónico" required />
-            <textarea
-              rows="4"
-              placeholder="¿En qué podemos ayudarte?"
-              required
-            ></textarea>
-            <button type="submit">Enviar Mensaje</button>
-          </form>
         </div>
 
         <div class="mapa-wrapper">
@@ -278,5 +286,37 @@
     <script src="navbar.js"></script>
     <script src="./footer.js"></script>
     <script src="./navbar.js"></script>
+    <script>
+      function actualizarHorario() {
+        const estado = document.getElementById("estado-horario");
+
+        const ahora = new Date();
+
+        const horaTorreon = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/Monterrey",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }).format(ahora);
+
+        const [hora, minutos] = horaTorreon.split(":").map(Number);
+        console.log([hora, minutos]);
+        const horaActual = hora * 60 + minutos;
+
+        const horaApertura = 8 * 60;
+        const horaCierre = 16 * 60;
+
+        if (horaActual >= horaApertura && horaActual < horaCierre) {
+          estado.textContent = "Abierto";
+          estado.style.color = "green";
+        } else {
+          estado.textContent = "Cerrado";
+          estado.style.color = "red";
+        }
+      }
+
+      actualizarHorario();
+      setInterval(actualizarHorario, 60000);
+    </script>
   </body>
 </html>
