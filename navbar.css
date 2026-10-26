@@ -21,11 +21,12 @@ header {
   padding: 15px 20px;
 }
 
-.logo img {
+.navbar .logo img,
+.nav-logo-img {
   height: 45px;
+  width: auto;
   display: block;
 }
-
 /* Botón hamburguesa (oculto por defecto en escritorio) */
 .menu-toggle {
   display: none;

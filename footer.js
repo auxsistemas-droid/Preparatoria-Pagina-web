@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <ul>
                         <li><a href="./index.html"><i class="fa-solid fa-angle-right"></i> Inicio</a></li>
                         <li><a href="./nosotros.html"><i class="fa-solid fa-angle-right"></i> Nosotros</a></li>
-                        <li><a href="./oferta-educativa.html"><i class="fa-solid fa-angle-right"></i> Oferta Educativa</a></li>
-                        <li><a href="./proceso-admision.html"><i class="fa-solid fa-angle-right"></i> Proceso de Admisión</a></li>
+                        <li><a href="./oferta.html"><i class="fa-solid fa-angle-right"></i> Oferta Educativa</a></li>
+                        <li><a href="./admisiones.html"><i class="fa-solid fa-angle-right"></i> Proceso de Admisión</a></li>
                         <li><a href="./contacto.html"><i class="fa-solid fa-angle-right"></i> Contacto</a></li>
                     </ul>
                 </div>
@@ -31,9 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <!-- Columna 3: Contacto -->
                 <div class="footer-section contact">
                     <h3>Contacto</h3>
-                    <p><i class="fa-solid fa-location-dot"></i> Av. Universidad 123, Torreón, Coahuila</p>
-                    <p><i class="fa-solid fa-phone"></i> +52 123 456 7890</p>
-                    <p><i class="fa-solid fa-envelope"></i> info@universidad.edu.mx</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Calz. Río Nazas 130, Villa
+        Jardín, Torreón, Coahuila</p>
+                    <p><i class="fa-solid fa-envelope"></i> CP.27130</p>
+
+                    <p><i class="fa-solid fa-phone"></i> +52 8717178714</p>
+                    <p><i class="fa-solid fa-envelope"></i> prepalasalle@ulsalaguna.edu.mx</p>
                 </div>
             </div>
 

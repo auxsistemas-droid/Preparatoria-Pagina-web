@@ -237,12 +237,13 @@
     <main class="contacto">
       <div class="contacto-grid">
         <div class="contacto-info">
-          <h3>Contactanos</h3>
+          <h3>Contáctanos</h3>
           <ul class="info-lista">
             <li>
               <i class="fa-solid fa-location-dot"></i> Calz. Río Nazas 130,
               Villa Jardín, Torreón, Coahuila
             </li>
+            <li><i class="fa-solid fa-envelope"></i> CP.27130</li>
             <li>
               <i class="fa-solid fa-phone"></i>
               <a
@@ -261,7 +262,7 @@
             </a>
             <li>
               <i class="fa-solid fa-comment"></i>
-              Horario de Atención 8:00 AM - 4:00 PM
+              Horario de Atención Lunes a Viernes 8:00 AM - 4:00 PM
             </li>
             <p>Estado: <span id="estado-horario"></span></p>
           </ul>
@@ -269,7 +270,7 @@
 
         <div class="mapa-wrapper">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1272.664393147701!2d-103.46748824820392!3d25.550416190271115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fd976b0c133c1%3A0x5e6022a5ae6c20f7!2sUniversidad%20La%20Salle%20Laguna!5e0!3m2!1ses-419!2smx!4v1790704953581!5m2!1ses-419!2smx"
+            src=https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1513.3545373243287!2d-103.45105667498797!3d25.558889359382064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x868fda2aa0fef92b%3A0x4a5f2dcddef87935!2sPreparatoria%20La%20Salle%20Torre%C3%B3n!5e0!3m2!1ses-419!2smx!4v1792803052323!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
             title="Ubicación de Universidad La Salle Laguna"
             allowfullscreen
             loading="lazy"
@@ -300,7 +301,6 @@
         }).format(ahora);
 
         const [hora, minutos] = horaTorreon.split(":").map(Number);
-        console.log([hora, minutos]);
         const horaActual = hora * 60 + minutos;
 
         const horaApertura = 8 * 60;
