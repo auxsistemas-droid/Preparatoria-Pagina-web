@@ -9,10 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="./plstcolor.png" alt="Logo La Salle" class="footer-logo">
                     <p>Formando líderes con excelencia académica, humana y valores cristianos.</p>
                     <div class="socials">
-                        <a href="" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/prepalasalletorreon/?locale=es_LA" aria-label="Facebook" target=_blank><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/lasalletorreon/?hl=es" aria-label="Instagram" target=_blank><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/lasalletorreon" aria-label="X (Twitter)" target=_blank><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UCBCN8pHdNe1ohbgAhKSn97g" aria-label="YouTube" target=_blank><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.tiktok.com/@lasalletorreon?_r=1&_t=ZS-9AzMnggzx5k" aria-label="Tiktok" target=_blank><i class="fa-brands fa-tiktok"></i></a>
                     </div>
                 </div>
 
