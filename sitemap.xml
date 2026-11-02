@@ -1,8 +1,25 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
     <loc>https://preparatoria.lasallelaguna.mx/</loc>
+  </url>
+
+  <url>
+    <loc>https://preparatoria.lasallelaguna.mx/contacto</loc>
+  </url>
+
+  <url>
+    <loc>https://preparatoria.lasallelaguna.mx/admisiones</loc>
+  </url>
+
+  <url>
+    <loc>https://preparatoria.lasallelaguna.mx/oferta</loc>
+  </url>
+
+  <url>
+    <loc>https://preparatoria.lasallelaguna.mx/nosotros</loc>
   </url>
 
 </urlset>
