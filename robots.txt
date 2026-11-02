@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://preparatoria.lasallelaguna.mx/sitemap.xml
