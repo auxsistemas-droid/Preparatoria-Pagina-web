@@ -14,7 +14,7 @@ function actualizarHorario() {
   const horaActual = hora * 60 + minutos;
 
   const horaApertura = 8 * 60;
-  const horaCierre = 16 * 60;
+  const horaCierre = 14 * 60;
 
   if (horaActual >= horaApertura && horaActual < horaCierre) {
     estado.textContent = "Abierto";
