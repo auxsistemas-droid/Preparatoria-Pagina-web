@@ -116,24 +116,20 @@
         user-select: none;
         table-layout: fixed;
       }
-      /* Transición fluida utilizando grid y fr */
       .tabla-wrapper {
         display: grid;
         grid-template-rows: 0fr;
         transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
-      /* Filas visibles fijas (las primeras 4) */
       .filas-visibles {
         display: table-row-group;
       }
       .filas-ocultas-wrapper {
         overflow: hidden;
       }
-      /* Contenedor interno para animar suavemente el resto de filas */
       .filas-ocultas-wrapper {
         overflow: hidden;
       }
-      /* Estado Expandido: cambia a 1fr para mostrar todo fluidamente */
       .tabla.expandida .tabla-wrapper {
         grid-template-rows: 1fr;
       }
@@ -174,7 +170,6 @@
         color: #000000;
         border-bottom: 1px solid #e2e8f0;
         transition: background-color 0.2s ease;
-        /* Evita que textos muy largos deformen el ancho de las celdas */
         word-wrap: break-word;
       }
 
@@ -236,7 +231,6 @@
       }
 
       /* Envoltorio de cuadrícula para las tarjetas */
-      /* Si no quieres cambiar tu HTML, acomodará las .card automáticamente */
       .Deportes,
       .Talleres {
         display: grid;
@@ -248,11 +242,10 @@
       .Deportes > p,
       .Talleres h2,
       .Talleres > p {
-        grid-column: 1 / -1; /* Mantiene el título y párrafo a ancho completo */
+        grid-column: 1 / -1;
       }
 
       /* --- ESTILO DE LAS CARTAS (CARD) --- */
-      /* --- ESTADO NORMAL (Grisáceo / Desactivado) --- */
       .card {
         background: #f8fafc;
         padding: 1.8rem 1.5rem;
@@ -261,11 +254,9 @@
         border-top: 4px solid #94a3b8;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 
-        /* Filtro para convertir todo el contenido interno a escala de grises */
         filter: grayscale(100%);
         opacity: 0.75;
 
-        /* Agregamos filter y opacity a la transición suave */
         transition:
           transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
           box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
@@ -306,16 +297,13 @@
       }
 
       .card:hover h3 {
-        color: var(
-          --blue-lasalle,
-          #023365
-        ); /* Título cambia al azul institucional */
+        color: var(--blue-lasalle, #023365);
       }
       /* --- ESTILOS PARA LA IMAGEN EN LAS TARJETAS --- */
       .card img {
         width: 100%;
-        height: 160px; /* Altura uniforme para todas las fotos */
-        object-fit: cover; /* Evita que la imagen se deforme o estire */
+        height: 160px;
+        object-fit: cover;
         border-radius: 8px;
         margin-top: 0.8rem;
         display: block;
@@ -326,14 +314,12 @@
 
       /* Opcional: Contenedor para evitar que la imagen se salga al hacer zoom */
       .card {
-        overflow: hidden; /* Mantiene la imagen dentro de los bordes redondeados */
+        overflow: hidden;
       }
 
       /* --- EFECTO EN HOVER PARA LA IMAGEN --- */
       .card:hover img {
-        transform: scale(
-          1.05
-        ); /* Efecto de zoom suave en la foto al pasar el cursor */
+        transform: scale(1.05);
       }
 
       /* Ajustes Responsivos */
@@ -443,7 +429,7 @@
         }
         table {
           min-width: 680px;
-        } /* la tabla hace scroll horizontal */
+        }
         th,
         td {
           padding: 0.8rem 0.9rem;
@@ -731,7 +717,7 @@
           <h3>Producción Audiovisual y Fotografía</h3>
         </div>
         <div class="card">
-          <h3>Relaciones Públicas y Protocolo</h3>
+          <h3>Pintura</h3>
         </div>
       </div>
       <div class="Talleres">
