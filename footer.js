@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <li><a href="./oferta.html"><i class="fa-solid fa-angle-right"></i> Oferta Educativa</a></li>
                         <li><a href="./admisiones.html"><i class="fa-solid fa-angle-right"></i> Proceso de Admisión</a></li>
                         <li><a href="./contacto.html"><i class="fa-solid fa-angle-right"></i> Contacto</a></li>
+                        <li><a href="https://lasallelaguna.mx/privacidad/" target="_blank" aria-label="Aviso de Privacidad"><i class="fa-solid fa-angle-right"></i> Aviso de Privacidad</a></li>
                     </ul>
                 </div>
 
